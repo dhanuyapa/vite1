@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Nav/Navbar';
+import Addcustomer from './components/Addcustomer/Addcustomer';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <Router>
       <div>
-      <Navbar />
+        <Navbar />
+        <Routes>
+          <Route path="/register" element={<Addcustomer />} />
+        </Routes>
       </div>
-     
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
