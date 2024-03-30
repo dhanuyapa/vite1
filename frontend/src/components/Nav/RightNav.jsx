@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Ul = styled.ul`
   list-style: none;
@@ -27,16 +28,14 @@ const Ul = styled.ul`
 
 const RightNav = ({ open }) => {
   return (
-    
     <Ul open={open}>
-        
-      <li>Home</li>
-      <li>About Us</li>
-      <li>Contact Us</li>
-      <li>Sign In</li>
-      <li>Sign Up</li>
+      <li><Link to="/">Home</Link></li>
+      <li><Link to="/about">About Us</Link></li>
+      <li><Link to="/contact">Contact Us</Link></li>
+      <li><Link to="/signin">Sign In</Link></li>
+      <li><Link to="/register">Sign Up</Link></li>
     </Ul>
-  )
+  );
 }
 
-export default RightNav
+export default RightNav;
