@@ -86,6 +86,7 @@ const Addcustomer = () => {
       // Save data to MongoDB
       await axios.post('http://localhost:8070/customers/register', customer);
       console.log('customer added successfully');
+      alert('customer added successfully');
 
       setCustomer({
         fname: '',
@@ -102,9 +103,10 @@ const Addcustomer = () => {
         confirmPassword: '',
       });
       // Navigate to another page after submission
-      navigate('/hfetch'); // Change '/hfetch' to the desired URL
+      navigate('/loginCus'); // Change '/hfetch' to the desired URL
     } catch (error) {
-      console.error('Error adding food:', error);
+        console.log('Error adding food:', error);
+      calert('Error adding food:', error);
     }
   };
 
@@ -115,43 +117,71 @@ const Addcustomer = () => {
           <form method="POST" onSubmit={handleSubmit}>
             <center><h1 style={{ color: "black", backgroundColor: "white" }}>Register</h1></center>
             <div className="form1">
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="fname"
-                  name="fname"
-                  title="Enter only letters"
-                  required
-                  placeholder="Enter First Name"
-                  value={customer.fname}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="lname"
-                  name="lname"
-                  title="Enter only letters"
-                  required
-                  placeholder="Enter Last Name"
-                  value={customer.lname}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="nic"
-                  name="nic"
-                  pattern="^(?:\d{12}|\d{12}[Vv])$"
-                  title="Enter exactly 12 numbers or 12 numbers followed by 'V'/'v'"
-                  required
-                  placeholder="Enter NIC No"
-                  value={customer.nic}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="input-group">
+  <input
+    type="text"
+    id="fname"
+    name="fname"
+    title="Enter only letters"
+    required
+    placeholder="Enter First Name"
+    value={customer.fname}
+    onChange={(e) => {
+      const input = e.target.value;
+      if (/^[A-Za-z]*$/.test(input)) {
+        setCustomer({ ...customer, fname: input });
+      }
+    }}
+    onKeyPress={(e) => {
+      const charCode = e.charCode;
+      if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+        e.preventDefault();
+      }
+    }}
+  />
+</div>
+<div className="input-group">
+  <input
+    type="text"
+    id="lname"
+    name="lname"
+    title="Enter only letters"
+    required
+    placeholder="Enter Last Name"
+    value={customer.lname}
+    onChange={(e) => {
+      const input = e.target.value;
+      if (/^[A-Za-z]*$/.test(input)) {
+        setCustomer({ ...customer, lname: input });
+      }
+    }}
+    onKeyPress={(e) => {
+      const charCode = e.charCode;
+      if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+        e.preventDefault();
+      }
+    }}
+  />
+</div>
+<div className="input-group">
+  <input
+    type="text"
+    id="nic"
+    name="nic"
+    pattern="^(?:\d{12}|\d{12}[Vv])$"
+    title="Enter exactly 12 numbers or 12 numbers followed by 'V'/'v'"
+    required
+    placeholder="Enter NIC No"
+    value={customer.nic}
+    onChange={(e) => {
+      const input = e.target.value;
+      if (/^\d{0,12}[Vv]?$/.test(input)) {
+        setCustomer({ ...customer, nic: input });
+      }
+    }}
+  />
+</div>
+
               <div>
                 <label>
                   Upload Image:
@@ -163,63 +193,153 @@ const Addcustomer = () => {
                 </label>
               </div>
               <div className="input-group1">
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  maxLength="10"
-                  placeholder="Enter phone No"
-                  title="Enter a number that starts with 0 and has 9 additional digits"
-                  required
-                  value={customer.phone}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group1">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter email"
-                  title="Enter a valid email address"
-                  required
-                  value={customer.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="no"
-                  name="no"
-                  placeholder="Address No"
-                  required
-                  value={customer.no}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="street1"
-                  name="street1"
-                  placeholder="Street/city"
-                  required
-                  value={customer.street1}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="input-group">
-                <input
-                  type="text"
-                  id="street2"
-                  name="street2"
-                  placeholder="Street/city"
-                  required
-                  value={customer.street2}
-                  onChange={handleChange}
-                />
-              </div>
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    maxLength="10"
+    placeholder="Enter phone No"
+    title="Enter a number that starts with 0 and has 9 additional digits"
+    required
+    value={customer.phone}
+    onKeyPress={(e) => {
+      const charCode = e.charCode;
+      const currentValue = e.target.value;
+
+      // Allow only numeric characters and backspace/delete key
+      if (
+        (charCode < 48 || charCode > 57) && // Not a numeric character
+        charCode !== 8 && // Not backspace
+        charCode !== 46 // Not delete
+      ) {
+        e.preventDefault();
+      }
+    }}
+    onChange={(e) => {
+      const input = e.target.value;
+      if (/^[0-9]*$/.test(input) && input.length <= 10) {
+        setCustomer({ ...customer, phone: input });
+      }
+    }}
+  />
+</div>
+
+
+
+<div className="input-group1">
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Enter email"
+    title="Enter a valid email address"
+    required
+    value={customer.email}
+    onChange={(e) => {
+      const input = e.target.value;
+      setCustomer({ ...customer, email: input });
+    }}
+  />
+</div>
+
+
+<div className="input-group">
+  <input
+    type="text"
+    id="no"
+    name="no"
+    placeholder="Address No"
+    required
+    value={customer.no}
+    onChange={(e) => {
+      let input = e.target.value;
+      input = input.replace(/\/+/g, '/');
+
+      if (input.length > 8) {
+        input = input.slice(0, 8);
+      }
+      setCustomer({ ...customer, no: input });
+    }}
+    onKeyPress={(e) => {
+      const charCode = e.charCode;
+      const input = e.target.value;
+
+      if (charCode >= 48 && charCode <= 57) {
+        if (input.indexOf('/') === -1) {
+          if (input.length >= 4) {
+            e.preventDefault();
+          }
+        } else {
+          const parts = input.split('/');
+          if (parts.length === 2) {
+            if (parts[0].length >= 4 || parts[1].length >= 4) {
+              e.preventDefault();
+            }
+          } else {
+            e.preventDefault();
+          }
+        }
+      } else if (charCode === 47) {
+        if (input.indexOf('/') !== -1) {
+          e.preventDefault();
+        }
+      } else {
+        e.preventDefault();
+      }
+    }}
+  />
+</div>
+
+<div className="input-group">
+  <input
+    type="text"
+    id="street1"
+    name="street1"
+    placeholder="Street/city"
+    required
+    value={customer.street1}
+    onChange={(e) => {
+      let input = e.target.value;
+      input = input.replace(/[^A-Za-z\s]/g, '');
+      if (input.length > 50) {
+        input = input.slice(0, 50);
+      }
+      setCustomer({ ...customer, street1: input });
+    }}
+    onKeyPress={(e) => {
+      const charCode = e.charCode;
+      if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32)) {
+        e.preventDefault();
+      }
+    }}
+  />
+</div>
+
+<div className="input-group">
+  <input
+    type="text"
+    id="street2"
+    name="street2"
+    placeholder="Street/city"
+    required
+    value={customer.street2}
+    onChange={(e) => {
+      let input = e.target.value;
+      input = input.replace(/[^A-Za-z\s]/g, '');
+      if (input.length > 50) {
+        input = input.slice(0, 50);
+      }
+      setCustomer({ ...customer, street2: input });
+    }}
+    onKeyPress={(e) => {
+      const charCode = e.charCode;
+      if (!((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32)) {
+        e.preventDefault();
+      }
+    }}
+  />
+</div>
+
             </div>
             <select
               id="city"
@@ -256,30 +376,53 @@ const Addcustomer = () => {
               <option value="VA">Vavuniya</option>
             </select>
             <div className="password-fields">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                minLength="8"
-                required
-                value={customer.password}
-                onChange={handleChange}
-              />
-              {customer.password && (customer.password.length < 8 || /^[a-zA-Z]*$/.test(customer.password) || /^[0-9]*$/.test(customer.password)) && (
-                <p className="password-strength">Weak Password</p>
-              )}
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                minLength="8"
-                required
-                value={customer.confirmPassword}
-                onChange={handleChange}
-              />
-            </div>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Password"
+    minLength="8"
+    required
+    value={customer.password}
+    onChange={(e) => {
+      const password = e.target.value;
+      const lettersOnly = /^[a-zA-Z]*$/.test(password);
+      const numbersOnly = /^[0-9]*$/.test(password);
+
+      if (password.length < 8 || lettersOnly || numbersOnly) {
+        e.target.setCustomValidity('Weak Password');
+      } else {
+        e.target.setCustomValidity('');
+      }
+
+      setCustomer({ ...customer, password: password });
+    }}
+  />
+  {customer.password && (customer.password.length < 8 || /^[a-zA-Z]*$/.test(customer.password) || /^[0-9]*$/.test(customer.password)) && (
+    <p className="password-strength">Weak Password</p>
+  )}
+  <input
+    type="password"
+    id="confirmPassword"
+    name="confirmPassword"
+    placeholder="Confirm Password"
+    minLength="8"
+    required
+    value={customer.confirmPassword}
+    onChange={(e) => {
+      setCustomer({ ...customer, confirmPassword: e.target.value });
+    }}
+    onBlur={(e) => {
+      const confirmPassword = e.target.value;
+      if (confirmPassword !== customer.password) {
+        e.target.setCustomValidity("Passwords do not match");
+      } else {
+        e.target.setCustomValidity("");
+      }
+    }}
+  />
+</div>
+
             <div className="sub">
               <button type="submit" className="red-button">Submit</button>
             </div>

@@ -1,6 +1,8 @@
 const Customer = require("../models/Customer");
 const DeletedCustomer = require("../models/DeletedCustomer");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 // Register a new customer
 exports.registerCustomer = async (req, res) => {
