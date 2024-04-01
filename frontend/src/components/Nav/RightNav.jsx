@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 
 const Ul = styled.ul`
   list-style: none;
@@ -27,12 +27,23 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open }) => {
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => {
+    const loggedInUserNIC = localStorage.getItem('loggedInUserNIC');
+    if (loggedInUserNIC) {
+      navigate(`/getUser/${loggedInUserNIC}`);
+    } else {
+      navigate('/loginCus');
+    }
+  };
+
   return (
     <Ul open={open}>
-      <li><Link to="/">Home</Link></li>
+      <li><Link to="/getUser/:nic" onClick={handleProfileClick}>Profile</Link></li>
       <li><Link to="/about">About Us</Link></li>
       <li><Link to="/contact">Contact Us</Link></li>
-      <li><Link to="/signin">Sign In</Link></li>
+      <li><Link to="/loginCus">Sign In</Link></li>
       <li><Link to="/register">Sign Up</Link></li>
     </Ul>
   );
