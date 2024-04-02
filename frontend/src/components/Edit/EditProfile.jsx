@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 
+
 const EditProfile = () => {
   const { nic } = useParams(); // Get NIC from URL params
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -17,9 +18,7 @@ const EditProfile = () => {
     street1: '',
     street2: '',
     city: '',
-    imageUrl: '',
-    password: '',
-    confirmPassword: '',
+    imageUrl: ''
   });
 
   // Initialize Firebase app
@@ -95,11 +94,30 @@ const firebaseConfig = {
     }
   };
 
+  const handleDeleteAccount = () => {
+    const confirmDelete = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
+
+    if (confirmDelete) {
+      axios
+        .delete(`http://localhost:8070/customers/deleteCus/${nic}`)
+        .then((response) => {
+          console.log('Account deleted successfully', response.data);
+          alert('Account deleted successfully');
+          localStorage.removeItem('loggedInUserNIC');
+          navigate('/register');
+        })
+        .catch((error) => {
+          console.error('Error deleting account', error);
+          alert('Error deleting account');
+        });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // Check if all fields are filled
-      if (!customer.fname || !customer.lname || !customer.phone || !customer.email || !customer.no || !customer.street1 || !customer.street2 || !customer.city || !customer.imageUrl || !customer.password || !customer.confirmPassword) {
+      if (!customer.fname || !customer.lname || !customer.phone || !customer.email || !customer.no || !customer.street1 || !customer.street2 || !customer.city || !customer.imageUrl) {
         console.error('Please fill all fields');
         return;
       }
@@ -152,10 +170,32 @@ const firebaseConfig = {
         <div>
           <label htmlFor="city">City:</label>
           <select id="city" name="city" value={customer.city} onChange={handleChange} required>
-            <option value="">Select City</option>
-            <option value="Ampara">Ampara</option>
-            <option value="Anuradhapura">Anuradhapura</option>
-            {/* Add other city options */}
+            <option value="" disabled>Select City</option>
+            <option value="AM">Ampara</option>
+            <option value="AD">Anuradhapura</option>
+            <option value="BD">Badulla</option>
+            <option value="BT">Batticaloa</option>
+            <option value="CB">Colombo</option>
+            <option value="GL">Galle</option>
+            <option value="GP">Gampaha</option>
+            <option value="HB">Hambantota</option>
+            <option value="JA">Jaffna</option>
+            <option value="KT">Kalutara</option>
+            <option value="KD">Kandy</option>
+            <option value="KG">Kegalle</option>
+            <option value="KL">Kilinochchi</option>
+            <option value="KR">Kurunegala</option>
+            <option value="MN">Mannar</option>
+            <option value="MT">Matale</option>
+            <option value="MA">Matara</option>
+            <option value="MG">Monaragala</option>
+            <option value="ML">Mullaitivu</option>
+            <option value="NE">Nuwara Eliya</option>
+            <option value="PL">Polonnaruwa</option>
+            <option value="PT">Puttalam</option>
+            <option value="RT">Ratnapura</option>
+            <option value="TC">Trincomalee</option>
+            <option value="VA">Vavuniya</option>
           </select>
         </div>
         <div>
@@ -164,16 +204,9 @@ const firebaseConfig = {
             <input type="file" accept="image/*" onChange={handleImageChange} />
           </label>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={customer.password} onChange={handleChange} minLength="8" required />
-        </div>
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" value={customer.confirmPassword} onChange={handleChange} minLength="8" required />
-        </div>
         <button type="submit">Save Changes</button>
       </form>
+      <button onClick={handleDeleteAccount}>Delete Account</button>
     </div>
   );
 };

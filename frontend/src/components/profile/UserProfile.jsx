@@ -49,10 +49,7 @@ function UserProfile() {
         navigate(`/updateCus/${loggedInUserNIC}`);
     };
 
-    const handleSettings = () => {
-        navigate(`/DeleteAccount`);
-    };
-
+  
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -82,7 +79,7 @@ function UserProfile() {
                 )}
                 <div className="editbutton">
                     <button onClick={handleEditProfile}>Edit Profile</button>
-                    <button onClick={handleSettings} className="delete">Delete</button>
+                  
                 </div>
             </div>
         </div>

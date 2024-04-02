@@ -5,6 +5,10 @@ import Addcustomer from './components/Addcustomer/Addcustomer';
 import Login from './components/Login/Login';
 import UserProfile from './components/profile/UserProfile';
 import EditProfile from "./components/Edit/EditProfile";
+import AddFood from './components/Addfood/AddFood';
+import AllFoods from './components/AllFoods/AllFoods';
+
+import ViewFood from './components/ViewFood/ViewFood';
 
 import './App.css';
 
@@ -18,6 +22,9 @@ function App() {
           <Route path="/loginCus" element={<Login />} />
           <Route path="/getUser/:nic" element={<UserProfile />} />
           <Route path="/updateCus/:nic" element={<EditProfile />} /> {/* Removed the extra space */}
+          <Route path="/add" element={<AddFood />} />
+          <Route path="/fetch" element={<AllFoods/>} />
+          <Route path="/fetch/:id" element={<ViewFood/>} />
         </Routes>
       </div>
     </Router>
