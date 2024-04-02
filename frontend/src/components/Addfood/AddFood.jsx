@@ -89,7 +89,7 @@ const Addfoods = () => {
       });
 
       // Navigate to another page after submission
-      navigate('/fetch'); // Change '/hfetch' to the desired URL
+      navigate('/hfetch'); // Change '/hfetch' to the desired URL
     } catch (error) {
       console.error('Error adding food:', error);
     }

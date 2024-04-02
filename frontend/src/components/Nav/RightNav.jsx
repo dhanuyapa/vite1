@@ -45,6 +45,7 @@ const RightNav = ({ open }) => {
       <li><Link to="/add">Contact Us</Link></li>
       <li><Link to="/loginCus">Sign In</Link></li>
       <li><Link to="/register">Sign Up</Link></li>
+      <li><Link to="/hfetch">edit</Link></li>
     </Ul>
   );
 }

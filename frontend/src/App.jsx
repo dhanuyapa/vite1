@@ -9,6 +9,8 @@ import AddFood from './components/Addfood/AddFood';
 import AllFoods from './components/AllFoods/AllFoods';
 
 import ViewFood from './components/ViewFood/ViewFood';
+import EditAllFood from './components/AdminFood/EditAllFood';
+import EditFood from './components/AdminFood/EditFood';
 
 import './App.css';
 
@@ -25,6 +27,8 @@ function App() {
           <Route path="/add" element={<AddFood />} />
           <Route path="/fetch" element={<AllFoods/>} />
           <Route path="/fetch/:id" element={<ViewFood/>} />
+          <Route path="/hfetch" element={<EditAllFood/>} />
+          <Route path="/edit/:id" element={<EditFood/>} />
         </Routes>
       </div>
     </Router>
