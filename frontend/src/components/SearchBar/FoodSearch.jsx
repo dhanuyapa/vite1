@@ -1,0 +1,52 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+
+function FoodSearch() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  const handleSearch = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`http://localhost:8070/Food/search?foodName=${searchQuery}`);
+      const foods = response.data;
+      if (foods.length > 0) {
+        // If food is available, navigate to the ViewFood component
+        navigate(`/fetch/${foods[0]._id}`);
+      } else {
+        alert(`Food '${searchQuery}' is not available.`);
+      }
+    } catch (error) {
+      console.error('Error searching for food:', error);
+      alert('An error occurred while searching for food. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSearch();
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search for food..."
+        onKeyPress={handleKeyPress}
+      />
+      <button onClick={handleSearch} disabled={loading}>Search</button>
+
+      {loading && <p>Loading...</p>}
+    </div>
+  );
+}
+
+export default FoodSearch;

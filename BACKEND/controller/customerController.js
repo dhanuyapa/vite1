@@ -1,6 +1,8 @@
 const Customer = require("../models/Customer");
 const DeletedCustomer = require("../models/DeletedCustomer");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 // Register a new customer
 exports.registerCustomer = async (req, res) => {
@@ -168,3 +170,16 @@ exports.getCustomer = async (req, res) => {
         res.status(500).send({ status: "Error with customer", error: err.message });
     }
 };
+
+exports.searchCustomerByNIC = async (req, res) => {
+    try {
+        const { nic } = req.query;
+        const regex = new RegExp(nic, 'i');
+        const customers = await Customer.find({ nic: regex });
+        res.json(customers);
+    } catch (error) {
+        console.error("Error searching for customers:", error);
+        res.status(500).json({ error: "An error occurred while searching for customers" });
+    }
+};
+
