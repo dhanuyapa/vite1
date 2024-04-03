@@ -11,6 +11,10 @@ import AllFoods from './components/AllFoods/AllFoods';
 import ViewFood from './components/ViewFood/ViewFood';
 import EditAllFood from './components/AdminFood/EditAllFood';
 import EditFood from './components/AdminFood/EditFood';
+import AllCustomer from './components/AllCustomer/AllCustomer';
+
+
+
 
 import './App.css';
 
@@ -19,6 +23,7 @@ function App() {
     <Router>
       <div>
         <Navbar />
+       
         <Routes>
           <Route path="/register" element={<Addcustomer />} />
           <Route path="/loginCus" element={<Login />} />
@@ -29,6 +34,8 @@ function App() {
           <Route path="/fetch/:id" element={<ViewFood/>} />
           <Route path="/hfetch" element={<EditAllFood/>} />
           <Route path="/edit/:id" element={<EditFood/>} />
+          <Route path="/fetchc" element={<AllCustomer/>} />
+         
         </Routes>
       </div>
     </Router>

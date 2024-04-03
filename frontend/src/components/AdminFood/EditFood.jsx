@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { useNavigate, useParams } from 'react-router-dom';
-
-// Your Firebase configuration
-
+import AdminHeader from '../Header/AdminHeader';
 
 const EditFood = () => {
   const { id } = useParams();
@@ -28,7 +26,6 @@ const EditFood = () => {
 
 
   useEffect(() => {
-    // Fetch food details by ID
     const fetchFoodDetails = async () => {
       try {
         const response = await axios.get(`http://localhost:8070/food/fetch/${id}`);
@@ -93,8 +90,22 @@ const EditFood = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      const confirmDelete = window.confirm('Are you sure you want to delete this food?');
+      if (confirmDelete) {
+        await axios.delete(`http://localhost:8070/food/deleteFood/${id}`);
+        console.log('Food deleted successfully');
+        navigate('/hfetch'); // Navigate to desired page
+      }
+    } catch (error) {
+      console.error('Error deleting food:', error);
+    }
+  };
+
   return (
     <div>
+      <AdminHeader />
       <h1>Edit Food</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -143,6 +154,7 @@ const EditFood = () => {
         )}
         <br />
         <button type="submit">Save Changes</button>
+        <button type="button" onClick={handleDelete}>Delete Food</button>
       </form>
     </div>
   );

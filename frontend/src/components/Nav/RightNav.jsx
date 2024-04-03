@@ -10,6 +10,7 @@ const Ul = styled.ul`
     padding: 18px 10px;
   }
   @media (max-width: 768px) {
+    display: ${({ open }) => open ? 'flex' : 'none'};
     flex-flow: column nowrap;
     background-color: #0D2538;
     position: fixed;
@@ -26,6 +27,13 @@ const Ul = styled.ul`
   }
 `;
 
+const StyledLink = styled(Link)`
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+`;
+
 const RightNav = ({ open }) => {
   const navigate = useNavigate();
 
@@ -40,12 +48,11 @@ const RightNav = ({ open }) => {
 
   return (
     <Ul open={open}>
-      <li><Link to="/getUser/:nic" onClick={handleProfileClick}>Profile</Link></li>
-      <li><Link to="/fetch">About Us</Link></li>
-      <li><Link to="/add">Contact Us</Link></li>
-      <li><Link to="/loginCus">Sign In</Link></li>
-      <li><Link to="/register">Sign Up</Link></li>
-      <li><Link to="/hfetch">edit</Link></li>
+      <li><StyledLink to="/getUser/:nic" onClick={handleProfileClick}>Profile</StyledLink></li>
+      <li><StyledLink to="/fetch">About Us</StyledLink></li>
+      <li><StyledLink to="/add">Contact Us</StyledLink></li>
+      <li><StyledLink to="/loginCus">Sign In</StyledLink></li>
+      <li><StyledLink to="/register">Sign Up</StyledLink></li>
     </Ul>
   );
 }

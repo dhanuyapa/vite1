@@ -5,14 +5,13 @@ import { useNavigate } from 'react-router-dom';
 function UserProfile() {
     const [userDetails, setUserDetails] = useState(null);
     const [loading, setLoading] = useState(true);
-    const loggedInUserNIC = localStorage.getItem('loggedInUserNIC'); // Get logged-in user NIC from localStorage
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    const loggedInUserNIC = localStorage.getItem('loggedInUserNIC');
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchUserProfile() {
             try {
                 if (!loggedInUserNIC) {
-                    // If user is not logged in, stop loading and navigate to login page
                     setLoading(false);
                     navigate('/loginCus');
                     return;
@@ -35,10 +34,9 @@ function UserProfile() {
             }
         }
         fetchUserProfile();
-    }, [loggedInUserNIC, navigate]); // Include loggedInUserNIC and navigate in the dependency array
+    }, [loggedInUserNIC, navigate]);
 
     useEffect(() => {
-        // Check if the user details are deleted from local storage
         if (!loggedInUserNIC) {
             setLoading(false);
             setUserDetails(null);
@@ -49,7 +47,11 @@ function UserProfile() {
         navigate(`/updateCus/${loggedInUserNIC}`);
     };
 
-  
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInUserNIC'); // Remove logged-in user NIC from local storage
+        navigate('/loginCus'); // Navigate to the login page after logout
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -79,7 +81,7 @@ function UserProfile() {
                 )}
                 <div className="editbutton">
                     <button onClick={handleEditProfile}>Edit Profile</button>
-                  
+                    <button onClick={handleLogout}>Logout</button> {/* Add logout button */}
                 </div>
             </div>
         </div>

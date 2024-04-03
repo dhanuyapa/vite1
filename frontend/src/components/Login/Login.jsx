@@ -3,6 +3,7 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import FoodSearch from '../SearchBar/FoodSearch';
 
 function Login() {
   const [nic, setNic] = useState('');
@@ -70,6 +71,7 @@ function Login() {
 
   return (
     <div>
+        <FoodSearch />
       <div className="form">
         <center><h1>Login</h1></center>
         <br></br>

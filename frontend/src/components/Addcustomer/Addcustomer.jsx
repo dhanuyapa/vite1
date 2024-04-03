@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAarwFcpYIKj1T7Hb2yIOMNiDP5Hp-ezFc",
@@ -32,6 +34,8 @@ const Addcustomer = () => {
     password: '',
     confirmPassword: '',
   });
+  const [showPassword, setShowPassword] = useState(false); // Define showPassword state
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Define showConfirmPassword state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -108,6 +112,13 @@ const Addcustomer = () => {
         console.log('Error adding food:', error);
       calert('Error adding food:', error);
     }
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -377,50 +388,63 @@ const Addcustomer = () => {
             </select>
             <div className="password-fields">
   <input
-    type="password"
-    id="password"
-    name="password"
-    placeholder="Password"
-    minLength="8"
-    required
-    value={customer.password}
-    onChange={(e) => {
-      const password = e.target.value;
-      const lettersOnly = /^[a-zA-Z]*$/.test(password);
-      const numbersOnly = /^[0-9]*$/.test(password);
+        type={showPassword ? 'text' : 'password'}
+        id="password"
+        name="password"
+        placeholder="Password"
+        minLength="8"
+        required
+        value={customer.password}
+        onChange={(e) => {
+          const password = e.target.value;
+          const lettersOnly = /^[a-zA-Z]*$/.test(password);
+          const numbersOnly = /^[0-9]*$/.test(password);
 
-      if (password.length < 8 || lettersOnly || numbersOnly) {
-        e.target.setCustomValidity('Weak Password');
-      } else {
-        e.target.setCustomValidity('');
-      }
+          if (password.length < 8 || lettersOnly || numbersOnly) {
+            e.target.setCustomValidity('Weak Password');
+          } else {
+            e.target.setCustomValidity('');
+          }
 
-      setCustomer({ ...customer, password: password });
-    }}
-  />
-  {customer.password && (customer.password.length < 8 || /^[a-zA-Z]*$/.test(customer.password) || /^[0-9]*$/.test(customer.password)) && (
-    <p className="password-strength">Weak Password</p>
-  )}
-  <input
-    type="password"
-    id="confirmPassword"
-    name="confirmPassword"
-    placeholder="Confirm Password"
-    minLength="8"
-    required
-    value={customer.confirmPassword}
-    onChange={(e) => {
-      setCustomer({ ...customer, confirmPassword: e.target.value });
-    }}
-    onBlur={(e) => {
-      const confirmPassword = e.target.value;
-      if (confirmPassword !== customer.password) {
-        e.target.setCustomValidity("Passwords do not match");
-      } else {
-        e.target.setCustomValidity("");
-      }
-    }}
-  />
+          setCustomer({ ...customer, password: password });
+        }}
+      />
+      {/* Toggle visibility icon for password */}
+      {showPassword ? (
+        <VisibilityIcon onClick={togglePasswordVisibility} />
+      ) : (
+        <VisibilityOffIcon onClick={togglePasswordVisibility} />
+      )}
+      {customer.password && (customer.password.length < 8 || /^[a-zA-Z]*$/.test(customer.password) || /^[0-9]*$/.test(customer.password)) && (
+        <p className="password-strength">Weak Password</p>
+      )}
+      
+      <input
+        type={showConfirmPassword ? 'text' : 'password'}
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        minLength="8"
+        required
+        value={customer.confirmPassword}
+        onChange={(e) => {
+          setCustomer({ ...customer, confirmPassword: e.target.value });
+        }}
+        onBlur={(e) => {
+          const confirmPassword = e.target.value;
+          if (confirmPassword !== customer.password) {
+            e.target.setCustomValidity("Passwords do not match");
+          } else {
+            e.target.setCustomValidity("");
+          }
+        }}
+      />
+      {/* Toggle visibility icon for confirm password */}
+      {showConfirmPassword ? (
+        <VisibilityIcon onClick={toggleConfirmPasswordVisibility} />
+      ) : (
+        <VisibilityOffIcon onClick={toggleConfirmPasswordVisibility} />
+      )} 
 </div>
 
             <div className="sub">
