@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
+import AdminHeader from '../Header/AdminHeader';
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -97,6 +98,7 @@ const Addfoods = () => {
 
   return (
     <div>
+      <AdminHeader />
       <div>
         <h1>Add Food</h1>
         <form onSubmit={handleSubmit}>

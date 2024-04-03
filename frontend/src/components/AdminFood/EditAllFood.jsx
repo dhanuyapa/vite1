@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import AdminHeader from '../Header/AdminHeader';
 
 
 function EditAllFood() {
@@ -40,7 +40,7 @@ function EditAllFood() {
 
     return (
         <div className="all-foods-container">
-           
+            <AdminHeader />
             <h2>All Foods</h2>
             <ul className="food-list">
                 {foods.map((food) => (
