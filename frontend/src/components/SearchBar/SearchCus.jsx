@@ -2,47 +2,43 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function SearchCus() {
-  const [nic, setNic] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const [error, setError] = useState('');
+function CustomerSearch() {
+    const [nic, setNic] = useState('');
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-  const handleSearch = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(`http://localhost:8070/searchC?nic=${nic}`);
-      const foundCustomers = response.data;
+    const handleSearch = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8070/customers/searchByNIC/${nic}`);
+            const customer = response.data.customer;
+            if (customer) {
+                // Construct the address string
+                const address = `${customer.no}, ${customer.street1}, ${customer.street2}, ${customer.city}`;
+                // Show customer data in an alert
+                alert(`Customer found:\nName: ${customer.fname} ${customer.lname}\nNIC: ${customer.nic}\nPhone: ${customer.phone}\nEmail: ${customer.email}\nAddress: ${address}`);
+                // Navigate to UserProfile with NIC as a parameter
+               
+            } else {
+              alert('no customer')
+            }
+        } catch (error) {
+            console.error('Error searching for customer:', error);
+            alert('no customer')
+        }
+    };
 
-      if (foundCustomers.length > 0) {
-        // Navigate to the first found customer's details page
-        navigate(`/getUser/${nic}`);
-      } else {
-        // Show alert if no customers found
-        alert(`No customers found with NIC '${nic}'.`);
-      }
-    } catch (error) {
-      console.error('Error searching for customers:', error);
-      setError('An error occurred while searching for customers');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div>
-      <input
-        type="text"
-        value={nic}
-        onChange={(e) => setNic(e.target.value)}
-        placeholder="Enter NIC number"
-      />
-      <button onClick={handleSearch}>Search</button>
-
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-    </div>
-  );
+    return (
+        <div>
+            <input
+                type="text"
+                value={nic}
+                onChange={(e) => setNic(e.target.value)}
+                placeholder="Enter NIC"
+            />
+            <button onClick={handleSearch}>Search</button>
+            {error && <p>{error}</p>}
+        </div>
+    );
 }
 
-export default SearchCus;
+export default CustomerSearch;

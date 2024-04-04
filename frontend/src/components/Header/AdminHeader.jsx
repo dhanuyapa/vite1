@@ -25,7 +25,7 @@ function AdminHeader() {
           <Nav className="me-auto">
             <Nav.Link href="/add">Add Food</Nav.Link>
             <Nav.Link href="/hfetch">Edit Food</Nav.Link>
-            <Nav.Link href="/fetchc">Pricing</Nav.Link>
+            <Nav.Link href="/fetchc">All Customers</Nav.Link>
           </Nav>
           <FoodSearch />
           <SearchCus />
