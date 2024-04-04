@@ -7,15 +7,12 @@ import UserProfile from './components/profile/UserProfile';
 import EditProfile from "./components/Edit/EditProfile";
 import AddFood from './components/Addfood/AddFood';
 import AllFoods from './components/AllFoods/AllFoods';
-
 import ViewFood from './components/ViewFood/ViewFood';
 import EditAllFood from './components/AdminFood/EditAllFood';
 import EditFood from './components/AdminFood/EditFood';
 import AllCustomer from './components/AllCustomer/AllCustomer';
-
-
-
-
+import ViewCus from './components/ViewCustomer/ViewCus';
+import Home from './components/Home/Home';
 
 import './App.css';
 
@@ -24,8 +21,8 @@ function App() {
     <Router>
       <div>
         <Navbar />
-       
         <Routes>
+          <Route path="/" element={<Home />} /> {/* Display Home component by default */}
           <Route path="/register" element={<Addcustomer />} />
           <Route path="/loginCus" element={<Login />} />
           <Route path="/getUser/:nic" element={<UserProfile />} />
@@ -36,8 +33,7 @@ function App() {
           <Route path="/hfetch" element={<EditAllFood/>} />
           <Route path="/edit/:id" element={<EditFood/>} />
           <Route path="/fetchc" element={<AllCustomer/>} />
-           <Route path="/fetchc" element={<AllCustomer/>} />
-         
+          <Route path="/searchByNIC/:nic" element={<ViewCus/>} />
         </Routes>
       </div>
     </Router>
@@ -45,4 +41,3 @@ function App() {
 }
 
 export default App;
-
