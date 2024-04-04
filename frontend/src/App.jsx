@@ -16,6 +16,7 @@ import AllCustomer from './components/AllCustomer/AllCustomer';
 
 
 
+
 import './App.css';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/hfetch" element={<EditAllFood/>} />
           <Route path="/edit/:id" element={<EditFood/>} />
           <Route path="/fetchc" element={<AllCustomer/>} />
+           <Route path="/fetchc" element={<AllCustomer/>} />
          
         </Routes>
       </div>

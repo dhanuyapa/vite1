@@ -9,7 +9,9 @@ router.delete("/deleteCus/:nic", customerController.deleteCustomer);
 
 router.post("/loginCus", customerController.loginCustomer);
 router.get("/getUser/:nic", customerController.getCustomer);
-router.get("/searchC", customerController.searchCustomerByNIC);
+// Define routes
+router.get("/searchByNIC/:nic", customerController.searchByNIC);
+
 
 
 module.exports = router;

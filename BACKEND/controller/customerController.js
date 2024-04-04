@@ -170,16 +170,18 @@ exports.getCustomer = async (req, res) => {
         res.status(500).send({ status: "Error with customer", error: err.message });
     }
 };
-
-exports.searchCustomerByNIC = async (req, res) => {
+exports.searchByNIC = async (req, res) => {
     try {
-        const { nic } = req.query;
-        const regex = new RegExp(nic, 'i');
-        const customers = await Customer.find({ nic: regex });
-        res.json(customers);
+        const { nic } = req.params;
+        const customer = await Customer.findOne({ nic });
+
+        if (!customer) {
+            return res.status(404).json({ message: "Customer not found" });
+        }
+
+        res.status(200).json({ message: "Customer data found", customer });
     } catch (error) {
-        console.error("Error searching for customers:", error);
-        res.status(500).json({ error: "An error occurred while searching for customers" });
+        console.error("Error searching for customer by NIC", error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };
-
