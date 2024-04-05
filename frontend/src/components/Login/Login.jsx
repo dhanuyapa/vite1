@@ -4,6 +4,10 @@ import axios from 'axios';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import FoodSearch from '../SearchBar/FoodSearch';
+import  './Login.css';
+import login from './login.png';
+import person from './person.png';
+
 
 function Login() {
   const [nic, setNic] = useState('');
@@ -70,62 +74,98 @@ function Login() {
   };
 
   return (
-    <div>
-        <FoodSearch />
-      <div className="form">
-        <center><h1>Login</h1></center>
-        <br></br>
-        {loginSuccess ? (
-          <p className="success-message-yapa">Login successful!</p>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <div className="form-group-yapa1">
-              <input
-                type="text"
-                id="nic"
-                placeholder="Enter NIC"
-                name="nic"
-                value={nic}
-                onChange={handleNicChange}
-                required
-                autoComplete="off"
-              />
+    <section className="vh-100" style={{ backgroundColor: 'white' }}>
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col col-xl-10">
+          <div className="card" style={{ borderRadius: '1rem', border: '1px solid #000000' }}>
+
+              <div className="row g-0">
+                <div className="col-md-6 col-lg-5 d-none d-md-block">
+                <img
+  src={login}
+  alt="Login Form"
+  className="img-fluid"
+  style={{ borderRadius: '1rem 0 0 1rem' }}
+/>
+
+                </div>
+               
+
+                      <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div className="card-body p-4 p-lg-5 text-black">
+                    <form onSubmit={handleSubmit}>
+                      <div className="d-flex align-items-center mb-3 pb-1">
+                        <i className="fas fa-cubes fa-2x me-3" style={{ color: '#ff6219' }}></i>
+                       
+                       <div className="ll">
+  
+
+                      </div></div>
+
+                      <h2 className="login" >                      <img
+  src={person}
+  alt="person"
+  className="person"></img><br></br>Login</h2>
+                      <br></br>
+
+                      <div className="user-input-box-login">
+                      <label htmlFor="nic">Enter Your NIC</label> 
+                        <input
+                          type="text"
+                          id="nic"
+                          placeholder="Enter NIC"
+                          name="nic"
+                          value={nic}
+                          onChange={handleNicChange}
+                          required
+                          autoComplete="off"
+                        />
+                      </div>
+
+                      <div className="user-input-box-login">
+                      <label htmlFor="Password">Enter Your Password</label> 
+                        <input
+                          placeholder="Enter Password"
+                          type={showPassword ? 'text' : 'password'}
+                          id="password"
+                          name="password"
+                          value={password}
+                          onChange={handlePasswordChange}
+                          required
+                          autoComplete="off"
+                        />
+                        {/* Toggle visibility icon */}
+                        {showPassword ? (
+                          <VisibilityIcon className="visibility-icon-l" onClick={togglePasswordVisibility} />
+                        ) : (
+                          <VisibilityOffIcon className="visibility-icon-l" onClick={togglePasswordVisibility} />
+                        )}
+                      </div>
+
+                      <div className="form-submit-btn-l">
+                        <button type="submit" className="red-button">Login</button>
+                      </div>
+<br></br>
+                      <p className="signup-message-l">Don't have an account?{' '}</p>
+                      <div className="signup-link-yapa">
+
+                        
+                        <Link to="/register" className="signup-link">Register Here</Link>
+                      </div>
+                    </form>
+
+                    {errorMessage && <p className="error-message-yapa">{errorMessage}</p>}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="form-group-yapa1">
-              <input
-                placeholder="Enter Password"
-                type={showPassword ? 'text' : 'password'} // Toggle password visibility based on state
-                id="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-                autoComplete="off"
-              />
-              {/* Toggle visibility icon */}
-              {showPassword ? (
-                <VisibilityIcon  onClick={togglePasswordVisibility} />
-              ) : (
-                <VisibilityOffIcon onClick={togglePasswordVisibility} />
-              )}
-            </div>
-            <div className="form-group-yapa2">
-              <button type="submit" className="red-button">Login</button>
-            </div>
-            <p className="signup-message-yapa">
-              Haven't an account?{' '}
-            </p>
-            <center>
-              <Link to="/register" className="signup-link-yapa">
-                Sign up
-              </Link>
-            </center>
-          </form>
-        )}
-        {errorMessage && <p className="error-message-yapa">{errorMessage}</p>}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
+
 
 export default Login;
