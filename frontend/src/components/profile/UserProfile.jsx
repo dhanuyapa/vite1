@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './UserProfile.css'
+import EditIcon from '@mui/icons-material/Edit';
+import LogoutIcon from '@mui/icons-material/Logout';
+import profileBanner from './profileBanner.jpg'
 
 function UserProfile() {
     const [userDetails, setUserDetails] = useState(null);
@@ -61,30 +65,86 @@ function UserProfile() {
     }
 
     return (
-        <div>
-            <h2>User Profile</h2>
+        <div className="main">
+            
+           
+     
+        <div className="left">
+            <h2>My Account</h2>
             <div className="user-details">
-                <p><strong>First Name:</strong> {userDetails.fname}</p>
-                <p><strong>Last Name:</strong> {userDetails.lname}</p>
-                <p><strong>NIC:</strong> {userDetails.nic}</p>
-                <p><strong>Phone:</strong> {userDetails.phone}</p>
-                <p><strong>Email:</strong> {userDetails.email}</p>
-                <p><strong>No:</strong> {userDetails.no}</p>
-                <p><strong>Street 1:</strong> {userDetails.street1}</p>
-                <p><strong>Street 2:</strong> {userDetails.street2}</p>
-                <p><strong>City:</strong> {userDetails.city}</p>
-                {userDetails.imageUrl && (
-                    <div>
-                        <p><strong>Profile Image:</strong></p>
-                        <img src={userDetails.imageUrl} alt="Profile" className="profile-image" />
-                    </div>
-                )}
+            
+            <div className="user-details">
+    {userDetails.imageUrl && (
+        <div className="profile-image-dhanu">
+            <img src={userDetails.imageUrl} alt="Profile" className="profile-image" />
+        </div>
+    )}
+    <table className="user-data">
+        <tbody>
+            <tr className="tableRaw">
+                <td className="Heading"><strong>First Name:</strong></td>
+                <td className="data">{userDetails.fname}</td>
+            </tr>
+            <tr className="tableRaw2">
+                <td className="Heading"><strong>Last Name:</strong></td>
+                <td className="data">{userDetails.lname}</td>
+            </tr>
+            <tr className="tableRaw">
+                <td className="Heading"><strong>NIC:</strong></td>
+                <td className="data">{userDetails.nic}</td>
+            </tr>
+            <tr className="tableRaw2">
+                <td className="Heading"><strong>Phone:</strong></td>
+                <td className="data">{userDetails.phone}</td>
+            </tr>
+            <tr className="tableRaw">
+                <td className="Heading"><strong>Email:</strong></td>
+                <td className="data">{userDetails.email}</td>
+            </tr>
+            <tr className="tableRaw2">
+                <td className="Heading"><strong>No:</strong></td>
+                <td className="data">{userDetails.no}</td>
+            </tr>
+            <tr className="tableRaw">
+                <td className="Heading"><strong>Street 1:</strong></td>
+                <td className="data">{userDetails.street1}</td>
+            </tr>
+            <tr className="tableRaw2">
+                <td className="Heading"><strong>Street 2:</strong></td>
+                <td className="data">{userDetails.street2}</td>
+            </tr>
+            <tr className="tableRaw">
+                <td className="Heading"><strong>City:</strong></td>
+                <td className="data">{userDetails.city}</td>
+            </tr>
+        </tbody>
+    </table>
+</div><br></br>
+<div className="buttonp">
                 <div className="editbutton">
-                    <button onClick={handleEditProfile}>Edit Profile</button>
-                    <button onClick={handleLogout}>Logout</button> {/* Add logout button */}
-                </div>
+                    <button onClick={handleEditProfile}>Edit Profile <EditIcon /></button></div>
+                    <div className="logoutbutton">
+                    <button onClick={handleLogout}>Logout <LogoutIcon /></button> {/* Add logout button */}</div></div>
+                
             </div>
         </div>
+ 
+
+        <div className="right">
+
+
+        <img
+  src={profileBanner}
+  alt="profileBanner"
+  className="profileBanner"></img><br></br>
+  <div className="paragraph">
+<p>Welcome to your profile on [Website Name]! Here, you're in control of your food ordering experience. From exploring the diverse cuisines available in your area to managing your favorite restaurants and past orders, your profile is your gateway to culinary delights. Update your personal information, including delivery addresses and payment methods, to ensure a seamless ordering process every time. Keep track of your loyalty rewards and exclusive offers tailored just for you. Whether you're craving comfort food on a rainy day or seeking a gourmet feast for a special occasion, your profile is where the magic happens. Dive into a world of flavor, convenience, and satisfaction. Start exploring now!</p>
+</div> </div>
+
+
+
+        </div>
+       
     );
 }
 

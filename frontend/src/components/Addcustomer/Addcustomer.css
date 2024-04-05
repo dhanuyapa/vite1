@@ -14,7 +14,7 @@
     border-bottom: solid 1px white;
 }
 
-.user-input-box select {
+.user-input-box-dhanu select {
     width: 96%; /* Increase select field width to 100% */
     height: 40px; /* Set the height of the select field */
     border-radius: 7px;
@@ -24,7 +24,7 @@
   }
   
 
-.user-input-box label {
+.user-input-box-dhanu label {
     text-align: left; /* Align labels to the right */
     width: 45%; /* Adjust label width */
     color: white;
@@ -55,11 +55,11 @@ body {
     padding: 20px 0;
 }
 
-.user-input-box:nth-child(2n){
+.user-input-box-dhanu:nth-child(2n){
     justify-content: end;
 }
 
-.user-input-box{
+.user-input-box-dhanu{
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -70,7 +70,7 @@ body {
 
 
 
-.user-input-box label{
+.user-input-box-dhanu label{
     width: 95%;
     color: rgb(0, 0, 0);
     font-size: 20px;
@@ -78,7 +78,7 @@ body {
     margin: 5px 0;
 }
 
-.user-input-box input{
+.user-input-box-dhanu input{
     height: 40px;
     width: 95%;
     border-radius: 7px;
@@ -124,7 +124,7 @@ body {
         justify-content: space-between;
     }
 }
-.user-input-box {
+.user-input-box-dhanu {
     display: flex;
     align-items: center;
   }

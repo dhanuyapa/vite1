@@ -3,6 +3,10 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
+import './EditProfile.css'
+import DeleteIcon from '@mui/icons-material/Delete';
+import editvideo from './editvideo.mp4';
+import edit from './edit.jpg';
 
 
 const EditProfile = () => {
@@ -136,38 +140,75 @@ const firebaseConfig = {
   };
 
   return (
-    <div>
+    <div className="main">
+    <div className="left">
+      <div className="video">
+        <video src={editvideo} autoPlay loop muted>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+     <div className="photo">
+     <img
+  src={edit}
+  alt="edit"
+  className="edit"></img>
+     </div>
+
+    </div>
+
+
+
+
+<div className="right">
       <h2>Edit Profile</h2>
+      <div className="container1">
       <form onSubmit={handleSubmit}>
-        <div>
+
+      <div className="main-user-info">  
+      <div className="user-input-box-dhanu">
+  
           <label htmlFor="fname">First Name:</label>
           <input type="text" id="fname" name="fname" value={customer.fname} onChange={handleChange} required />
-        </div>
-        <div>
-          <label htmlFor="lname">Last Name:</label>
+       </div>
+
+<div className="user-input-box-dhanu"> 
+<label htmlFor="lname">Last Name:</label>
           <input type="text" id="lname" name="lname" value={customer.lname} onChange={handleChange} required />
-        </div>
-        <div>
-          <label htmlFor="phone">Phone:</label>
+</div>
+
+
+        <div className="user-input-box-dhanu"> 
+
+<label for="telephone">Telephone </label>
           <input type="tel" id="phone" name="phone" value={customer.phone} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+
+
+        <div className="user-input-box-dhanu"> 
+<label for="email">Email</label>
           <input type="email" id="email" name="email" value={customer.email} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="no">Address No:</label>
+
+
+        <div className="user-input-box-dhanu"> 
+<label for="no">Address No</label>
           <input type="text" id="no" name="no" value={customer.no} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="street1">Street 1:</label>
+
+
+        <div className="user-input-box-dhanu"> 
+<label for="street 1">Street 1</label>
           <input type="text" id="street1" name="street1" value={customer.street1} onChange={handleChange} required />
         </div>
-        <div>
+
+        
+        <div className="user-input-box-dhanu"> 
           <label htmlFor="street2">Street 2:</label>
           <input type="text" id="street2" name="street2" value={customer.street2} onChange={handleChange} required />
         </div>
-        <div>
+
+
+        <div className="user-input-box-dhanu"> 
           <label htmlFor="city">City:</label>
           <select id="city" name="city" value={customer.city} onChange={handleChange} required>
             <option value="" disabled>Select City</option>
@@ -198,15 +239,22 @@ const firebaseConfig = {
             <option value="VA">Vavuniya</option>
           </select>
         </div>
-        <div>
+
+
+        <div className="user-input-box-dhanu"> 
           <label>
             Upload Image:
             <input type="file" accept="image/*" onChange={handleImageChange} />
-          </label>
+          </label></div>
         </div>
-        <button type="submit">Save Changes</button>
-      </form>
-      <button onClick={handleDeleteAccount}>Delete Account</button>
+        <div className="savebtn">
+        <button type="submit">Save Changes</button></div>
+      </form></div><br></br>
+      <div className="btndelete">
+      <button onClick={handleDeleteAccount}>Delete Account <DeleteIcon/></button></div>
+    </div>
+
+   
     </div>
   );
 };

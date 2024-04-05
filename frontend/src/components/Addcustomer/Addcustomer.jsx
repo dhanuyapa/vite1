@@ -132,7 +132,7 @@ const Addcustomer = () => {
             <center><h1 className="form-title">Register</h1></center>
 
     <div className="main-user-info">  
-    <div className="user-input-box"> 
+    <div className="user-input-box-dhanu"> 
     <label for="first Name">First Name</label>
   <input
     type="text"
@@ -156,7 +156,7 @@ const Addcustomer = () => {
     }}
   />
 </div>   
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="last Name">Last Name</label>
   <input
     type="text"
@@ -181,7 +181,7 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="nic">NIC</label>
   <input
     type="text"
@@ -200,7 +200,7 @@ const Addcustomer = () => {
     }}
   />
 </div>
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
             
                 <label>
                   Profile Photo:
@@ -214,7 +214,7 @@ const Addcustomer = () => {
            </div> 
 
 
-           <div className="user-input-box"> 
+           <div className="user-input-box-dhanu"> 
 
            <label for="telephone">Telephone NUMBER </label>
   <input
@@ -249,7 +249,7 @@ const Addcustomer = () => {
 </div>
 
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="email">Email</label>
   <input
     type="email"
@@ -266,7 +266,7 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="no">Address No</label>
   <input
     type="text"
@@ -314,7 +314,7 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="street 1">Street 1</label>
   <input
     type="text"
@@ -340,7 +340,7 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="Street 2">Street </label>
   <input
     type="text"
@@ -366,7 +366,7 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
 <label for="city">City</label> 
             <select
               id="city"
@@ -405,7 +405,7 @@ const Addcustomer = () => {
 
             </div>
 
-            <div className="user-input-box">
+            <div className="user-input-box-dhanu">
   <label htmlFor="password">Password</label>
   <div className="password-input-wrapper">
     <input
@@ -445,7 +445,7 @@ const Addcustomer = () => {
 </div>
 
 
-<div className="user-input-box"> 
+<div className="user-input-box-dhanu"> 
   <label htmlFor="confirmPassword">Confirm Password</label> 
   <div className="password-input-wrapper">
   <input
