@@ -12,7 +12,7 @@ const Ul = styled.ul`
   @media (max-width: 768px) {
     display: ${({ open }) => open ? 'flex' : 'none'};
     flex-flow: column nowrap;
-    background-color: #0D2538;
+    background-color: #b5b569;
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
@@ -22,13 +22,14 @@ const Ul = styled.ul`
     padding-top: 3.5rem;
     transition: transform 0.3s ease-in-out;
     li {
-      color: #fff;
+      li {
+        color: ${({ open }) => open ? '#fff' : 'red'};
     }
   }
 `;
 
 const StyledLink = styled(Link)`
-  color: red;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
@@ -53,6 +54,7 @@ const RightNav = ({ open }) => {
       <li><StyledLink to="/add">Contact Us</StyledLink></li>
       <li><StyledLink to="/loginCus">Sign In</StyledLink></li>
       <li><StyledLink to="/register">Sign Up</StyledLink></li>
+      <li><StyledLink to="/ContactUs">Contact Us</StyledLink></li>
     </Ul>
   );
 }

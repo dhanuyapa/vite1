@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchCus from '../SearchBar/SearchCus';
+import AdminHeader from '../Header/AdminHeader';
 
 
 function AllCustomers() {
@@ -27,6 +28,7 @@ function AllCustomers() {
 
   return (
     <div>
+      <AdminHeader />
     <h2>All Customers</h2>
     <SearchCus />
     

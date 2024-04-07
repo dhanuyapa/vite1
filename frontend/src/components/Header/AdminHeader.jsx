@@ -26,8 +26,11 @@ function AdminHeader() {
             <Nav.Link href="/add">Add Food</Nav.Link>
             <Nav.Link href="/hfetch">Edit Food</Nav.Link>
             <Nav.Link href="/fetchc">All Customers</Nav.Link>
+            <Nav.Link href=" /fetch">All Foods</Nav.Link>
+           
+           
           </Nav>
-          <FoodSearch />
+       
           <SearchCus />
         </Navbar.Collapse>
       </Container>

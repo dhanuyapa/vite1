@@ -12,18 +12,14 @@ function CustomerSearch() {
             const response = await axios.get(`http://localhost:8070/customers/searchByNIC/${nic}`);
             const customer = response.data.customer;
             if (customer) {
-                // Construct the address string
-                const address = `${customer.no}, ${customer.street1}, ${customer.street2}, ${customer.city}`;
-                // Show customer data in an alert
-                alert(`Customer found:\nName: ${customer.fname} ${customer.lname}\nNIC: ${customer.nic}\nPhone: ${customer.phone}\nEmail: ${customer.email}\nAddress: ${address}`);
-                // Navigate to UserProfile with NIC as a parameter
-               
+                // Navigate to ViewCus with searchedCustomer as state
+                navigate(`/searchByNIC/${nic}`, { state: { searchedCustomer: customer } });
             } else {
-              alert('no customer')
+                setError('Customer not found');
             }
         } catch (error) {
             console.error('Error searching for customer:', error);
-            alert('no customer')
+            setError('Error searching for customer');
         }
     };
 

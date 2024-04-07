@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "./AllFood.css";
 import FoodSearch from '../SearchBar/FoodSearch';
-import AdminHeader from '../Header/AdminHeader';
+
 
 
 
@@ -44,7 +44,7 @@ function AllFoods() {
     return (
        
         <div className="all-foods-container">
-            <AdminHeader />
+          
           
           <FoodSearch />
             <h2>All Foods</h2>

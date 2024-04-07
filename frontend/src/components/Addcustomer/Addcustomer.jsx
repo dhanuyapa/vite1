@@ -5,6 +5,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { initializeApp } from "firebase/app";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import './Addcustomer.css';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAarwFcpYIKj1T7Hb2yIOMNiDP5Hp-ezFc",
@@ -122,13 +123,17 @@ const Addcustomer = () => {
   };
 
   return (
-    <div>
-      <div className="body">
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <form method="POST" onSubmit={handleSubmit}>
-            <center><h1 style={{ color: "black", backgroundColor: "white" }}>Register</h1></center>
-            <div className="form1">
-            <div className="input-group">
+    
+    <section>
+      <br></br>
+        <div className="container1">
+        <form className='flex' method="POST" onSubmit={handleSubmit}>
+          
+            <center><h1 className="form-title">Register</h1></center>
+
+    <div className="main-user-info">  
+    <div className="user-input-box-dhanu"> 
+    <label for="first Name">First Name</label>
   <input
     type="text"
     id="fname"
@@ -150,8 +155,9 @@ const Addcustomer = () => {
       }
     }}
   />
-</div>
-<div className="input-group">
+</div>   
+<div className="user-input-box-dhanu"> 
+<label for="last Name">Last Name</label>
   <input
     type="text"
     id="lname"
@@ -174,7 +180,9 @@ const Addcustomer = () => {
     }}
   />
 </div>
-<div className="input-group">
+
+<div className="user-input-box-dhanu"> 
+<label for="nic">NIC</label>
   <input
     type="text"
     id="nic"
@@ -192,18 +200,23 @@ const Addcustomer = () => {
     }}
   />
 </div>
-
-              <div>
+<div className="user-input-box-dhanu"> 
+            
                 <label>
-                  Upload Image:
+                  Profile Photo:
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
                   />
                 </label>
-              </div>
-              <div className="input-group1">
+          
+           </div> 
+
+
+           <div className="user-input-box-dhanu"> 
+
+           <label for="telephone">Telephone NUMBER </label>
   <input
     type="tel"
     id="phone"
@@ -236,8 +249,8 @@ const Addcustomer = () => {
 </div>
 
 
-
-<div className="input-group1">
+<div className="user-input-box-dhanu"> 
+<label for="email">Email</label>
   <input
     type="email"
     id="email"
@@ -253,8 +266,8 @@ const Addcustomer = () => {
   />
 </div>
 
-
-<div className="input-group">
+<div className="user-input-box-dhanu"> 
+<label for="no">Address No</label>
   <input
     type="text"
     id="no"
@@ -301,7 +314,8 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="input-group">
+<div className="user-input-box-dhanu"> 
+<label for="street 1">Street 1</label>
   <input
     type="text"
     id="street1"
@@ -326,7 +340,8 @@ const Addcustomer = () => {
   />
 </div>
 
-<div className="input-group">
+<div className="user-input-box-dhanu"> 
+<label for="Street 2">Street </label>
   <input
     type="text"
     id="street2"
@@ -351,7 +366,8 @@ const Addcustomer = () => {
   />
 </div>
 
-            </div>
+<div className="user-input-box-dhanu"> 
+<label for="city">City</label> 
             <select
               id="city"
               name="city"
@@ -386,74 +402,90 @@ const Addcustomer = () => {
               <option value="TC">Trincomalee</option>
               <option value="VA">Vavuniya</option>
             </select>
-            <div className="password-fields">
-  <input
-        type={showPassword ? 'text' : 'password'}
-        id="password"
-        name="password"
-        placeholder="Password"
-        minLength="8"
-        required
-        value={customer.password}
-        onChange={(e) => {
-          const password = e.target.value;
-          const lettersOnly = /^[a-zA-Z]*$/.test(password);
-          const numbersOnly = /^[0-9]*$/.test(password);
 
-          if (password.length < 8 || lettersOnly || numbersOnly) {
-            e.target.setCustomValidity('Weak Password');
-          } else {
-            e.target.setCustomValidity('');
-          }
+            </div>
 
-          setCustomer({ ...customer, password: password });
-        }}
-      />
-      {/* Toggle visibility icon for password */}
+            <div className="user-input-box-dhanu">
+  <label htmlFor="password">Password</label>
+  <div className="password-input-wrapper">
+    <input
+      type={showPassword ? 'text' : 'password'}
+      id="password"
+      name="password"
+      placeholder="Password"
+      minLength="8"
+      required
+      value={customer.password}
+      onChange={(e) => {
+        const password = e.target.value;
+        const lettersOnly = /^[a-zA-Z]*$/.test(password);
+        const numbersOnly = /^[0-9]*$/.test(password);
+
+        if (password.length < 8 || lettersOnly || numbersOnly) {
+          e.target.setCustomValidity('Weak Password');
+        } else {
+          e.target.setCustomValidity('');
+        }
+
+        setCustomer({ ...customer, password: password });
+      }}
+    />
+    {/* Toggle visibility icon for password */}
+    <div className="vis">
       {showPassword ? (
         <VisibilityIcon onClick={togglePasswordVisibility} />
       ) : (
         <VisibilityOffIcon onClick={togglePasswordVisibility} />
       )}
-      {customer.password && (customer.password.length < 8 || /^[a-zA-Z]*$/.test(customer.password) || /^[0-9]*$/.test(customer.password)) && (
-        <p className="password-strength">Weak Password</p>
-      )}
-      
-      <input
-        type={showConfirmPassword ? 'text' : 'password'}
-        id="confirmPassword"
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        minLength="8"
-        required
-        value={customer.confirmPassword}
-        onChange={(e) => {
-          setCustomer({ ...customer, confirmPassword: e.target.value });
-        }}
-        onBlur={(e) => {
-          const confirmPassword = e.target.value;
-          if (confirmPassword !== customer.password) {
-            e.target.setCustomValidity("Passwords do not match");
-          } else {
-            e.target.setCustomValidity("");
-          }
-        }}
-      />
-      {/* Toggle visibility icon for confirm password */}
-      {showConfirmPassword ? (
-        <VisibilityIcon onClick={toggleConfirmPasswordVisibility} />
-      ) : (
-        <VisibilityOffIcon onClick={toggleConfirmPasswordVisibility} />
-      )} 
+    </div>
+  </div>
+  {customer.password && (customer.password.length < 8 || /^[a-zA-Z]*$/.test(customer.password) || /^[0-9]*$/.test(customer.password)) && (
+    <p className="password-strength">Weak Password</p>
+  )}
 </div>
 
-            <div className="sub">
-              <button type="submit" className="red-button">Submit</button>
-            </div>
+
+<div className="user-input-box-dhanu"> 
+  <label htmlFor="confirmPassword">Confirm Password</label> 
+  <div className="password-input-wrapper">
+  <input
+    type={showConfirmPassword ? 'text' : 'password'}
+    id="confirmPassword"
+    name="confirmPassword"
+    placeholder="Confirm Password"
+    minLength="8"
+    required
+    value={customer.confirmPassword}
+    onChange={(e) => {
+      setCustomer({ ...customer, confirmPassword: e.target.value });
+    }}
+    onBlur={(e) => {
+      const confirmPassword = e.target.value;
+      if (confirmPassword !== customer.password) {
+        e.target.setCustomValidity("Passwords do not match");
+      } else {
+        e.target.setCustomValidity("");
+      }
+    }}
+  />
+  {/* Toggle visibility icon for confirm password */}
+  <div className="vis2">
+    {showConfirmPassword ? (
+      <VisibilityIcon onClick={toggleConfirmPasswordVisibility} />
+    ) : (
+      <VisibilityOffIcon onClick={toggleConfirmPasswordVisibility} />
+    )}
+  </div></div>
+</div></div>
+
+
+<div className="form-submit-btn"> 
+    <button type="submit">Submit</button>
+</div>
           </form>
-        </div>
-      </div>
-    </div>
+          </div>
+          </section>
+          
   );
 }
 
