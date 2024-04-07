@@ -13,6 +13,7 @@ import EditFood from './components/AdminFood/EditFood';
 import AllCustomer from './components/AllCustomer/AllCustomer';
 import ViewCus from './components/ViewCustomer/ViewCus';
 import Home from './components/Home/Home';
+import ContactUs from './components/Contact Us/ContactUs';
 
 import './App.css';
 
@@ -23,6 +24,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} /> {/* Display Home component by default */}
+          <Route path="/ContactUs" element={<ContactUs/>} /> {/* Display Home component by default */}
           <Route path="/register" element={<Addcustomer />} />
           <Route path="/loginCus" element={<Login />} />
           <Route path="/getUser/:nic" element={<UserProfile />} />

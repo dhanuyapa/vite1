@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import './FoodSearch.css';
+import SearchIcon from '@mui/icons-material/Search';
 
 function FoodSearch() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,18 +36,24 @@ function FoodSearch() {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search for food..."
-        onKeyPress={handleKeyPress}
-      />
-      <button onClick={handleSearch} disabled={loading}>Search</button>
+<div className="rounded-search-bar">
+      <div className="search-container">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search for food..."
+          onKeyPress={handleKeyPress}
+          className="search-input"
+        />
+        <SearchIcon onClick={handleSearch} /> {/* Handle click event here */}
+      </div>
+     
+   
 
       {loading && <p>Loading...</p>}
     </div>
+
   );
 }
 

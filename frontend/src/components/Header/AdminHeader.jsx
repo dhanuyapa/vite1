@@ -28,8 +28,9 @@ function AdminHeader() {
             <Nav.Link href="/fetchc">All Customers</Nav.Link>
             <Nav.Link href=" /fetch">All Foods</Nav.Link>
            
+           
           </Nav>
-          <FoodSearch />
+       
           <SearchCus />
         </Navbar.Collapse>
       </Container>

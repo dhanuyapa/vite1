@@ -4,6 +4,13 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
 import AdminHeader from '../Header/AdminHeader';
+import './Addfood.css'
+import login from './login.png';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import FoodSearch from '../SearchBar/FoodSearch';
+import Container from '@mui/material/Container';
+
+
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -73,7 +80,7 @@ const Addfoods = () => {
     try {
       // Check if all fields are filled
       if (!food.foodname || !food.price || !food.description || !food.imageUrl) {
-        console.error('Please fill all fields');
+        alert('Please fill all fields');
         return;
       }
 
@@ -95,55 +102,83 @@ const Addfoods = () => {
       console.error('Error adding food:', error);
     }
   };
+  const handleKeyPress = (event) => {
+    // Allow only numbers (0-9), backspace, and delete
+    const validKey = /^[0-9\b]+$/;
+    if (!validKey.test(event.key)) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <div>
-      <AdminHeader />
-      <div>
-        <h1>Add Food</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Food Name:
-            <input
-              type="text"
-              name="foodname"
-              value={food.foodname}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Price:
-            <input
-              type="text"
-              name="price"
-              value={food.price}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Description:
-            <textarea
-              name="description"
-              value={food.description}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Upload Image:
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-          </label>
-          <br />
-          <button type="submit">Submit</button>
-        </form>
+      <AdminHeader /><br></br>
+<div className="search2">
+      <FoodSearch /></div>
+      <section>
+      <div className="container5">
+        <div className="box">
+        <Container>
+  <AdminPanelSettingsIcon fontSize="large" />
+</Container>
+          <h1>Add Food</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Food Name:
+              <input
+                type="text"
+                name="foodname"
+                value={food.foodname}
+                onChange={handleChange}
+                className="food-input"
+              />
+            </label>
+            <br />
+            <label>
+              Price:
+              <input
+                type="text"
+                name="price"
+                value={food.price}
+                onChange={handleChange}
+                className="price-input"
+                onKeyPress={handleKeyPress} 
+              />
+            </label>
+            <br />
+            <label>
+              Description:
+              <textarea
+                name="description"
+                value={food.description}
+                onChange={handleChange}
+                className="description-input"
+                maxLength="50"
+              />
+            </label>
+            <br />
+            <label>
+              
+              Upload Image:
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="image-input"
+              />
+              
+            </label>
+            <br />
+            <div className="btn">
+            <button type="submit">Submit</button></div>
+          </form>
+        </div>
+        <div className="right">
+          <img src={login} alt="login" className="add" />
+        </div>
       </div>
-    </div>
+    </section>
+    </div> 
   );
 };
 
