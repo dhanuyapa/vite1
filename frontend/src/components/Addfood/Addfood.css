@@ -82,4 +82,24 @@ section {
     display: flex;
     justify-content: center; /* Center items horizontally */
   }
-  
+  .food-input,
+.price-input,
+.description-input,
+.image-input {
+  width: calc(100% - 20px); /* Adjust width as needed */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style for the textarea */
+.description-input {
+  height: 100px; /* Adjust height as needed */
+}
+
+/* Style for the file input */
+.image-input {
+  /* Add specific styles for file input if needed */
+}

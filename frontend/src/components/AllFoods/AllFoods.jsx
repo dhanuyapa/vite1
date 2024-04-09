@@ -44,9 +44,12 @@ function AllFoods() {
     return (
        
         <div className="all-foods-container">
+            <br></br>
           
-          
-          <FoodSearch />
+          <div className="search">
+
+      
+          <FoodSearch />    </div>
             <h2>All Foods</h2>
             <ul className="food-list">
                 {foods.map((food) => (
@@ -64,7 +67,7 @@ function AllFoods() {
                             <div className="food-price">Price: {food.price}</div>
                             <div className="food-description">Description: {food.description}</div>
                         </div>
-                        <button onClick={() => handleView(food._id)}>View</button>
+                        <button onClick={() => handleView(food._id)}>Add Cart</button>
                     </li>
                 ))}
             </ul>

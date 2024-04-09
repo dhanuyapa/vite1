@@ -6,6 +6,11 @@
     padding: 0;
     z-index: 1; /* Set a lower z-index for food items */
 }
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .food-item {
     cursor: pointer;
