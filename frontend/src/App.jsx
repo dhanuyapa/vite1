@@ -15,6 +15,7 @@ import ViewCus from './components/ViewCustomer/ViewCus';
 import Home from './components/Home/Home';
 import ContactUs from './components/Contact Us/ContactUs';
 
+
 import './App.css';
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           <Route path="/edit/:id" element={<EditFood/>} />
           <Route path="/fetchc" element={<AllCustomer/>} />
           <Route path="/searchByNIC/:nic" element={<ViewCus/>} />
+
+    
+
         </Routes>
       </div>
     </Router>

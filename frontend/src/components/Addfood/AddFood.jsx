@@ -169,7 +169,7 @@ const Addfoods = () => {
               
             </label>
             <br />
-            <div className="btn">
+            <div className="btnn">
             <button type="submit">Submit</button></div>
           </form>
         </div>
