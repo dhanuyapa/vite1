@@ -62,7 +62,7 @@ function AllFoods() {
                             <div className="food-price">Price: {food.price}</div>
                             <div className="food-description">Description: {food.description}</div>
                         </div>
-                        <button onClick={() => handleAddToCart(food._id)}>Add Cart</button>
+                        <button onClick={() => handleAddToCart(food._id)} className ="btnAdd">Add Cart</button>
                     </li>
                 ))}
             </ul>

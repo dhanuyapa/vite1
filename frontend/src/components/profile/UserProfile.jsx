@@ -138,7 +138,7 @@ function UserProfile() {
   alt="profileBanner"
   className="profileBanner"></img><br></br>
   <div className="paragraph">
-<p>Welcome to your profile on [Website Name]! Here, you're in control of your food ordering experience. From exploring the diverse cuisines available in your area to managing your favorite restaurants and past orders, your profile is your gateway to culinary delights. Update your personal information, including delivery addresses and payment methods, to ensure a seamless ordering process every time. Keep track of your loyalty rewards and exclusive offers tailored just for you. Whether you're craving comfort food on a rainy day or seeking a gourmet feast for a special occasion, your profile is where the magic happens. Dive into a world of flavor, convenience, and satisfaction. Start exploring now!</p>
+<p>Welcome to your profile on Yam Yard! Here, you're in control of your food ordering experience. From exploring the diverse cuisines available in your area to managing your favorite restaurants and past orders, your profile is your gateway to culinary delights. Update your personal information, including delivery addresses and payment methods, to ensure a seamless ordering process every time. Keep track of your loyalty rewards and exclusive offers tailored just for you. Whether you're craving comfort food on a rainy day or seeking a gourmet feast for a special occasion, your profile is where the magic happens. Dive into a world of flavor, convenience, and satisfaction. Start exploring now!</p>
 </div> </div>
 
 

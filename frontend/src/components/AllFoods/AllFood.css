@@ -23,7 +23,7 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-    /* Ensure food items stay behind the navbar */
+    height: 320px; /* Adjust the height value as needed */
 }
 
 .food-item:hover {
@@ -40,11 +40,11 @@
 }
 
 .food-item img {
-    width: 100%; /* Make the image fill its container */
+ 
     max-width: 200px; /* Set a maximum width for the image */
-    height: auto; /* Maintain aspect ratio */
+    height: 150px; /* Maintain aspect ratio */
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
     margin: 0 auto;
     z-index: 1; /* Ensure images stay behind the navbar */
 }
@@ -73,4 +73,17 @@
     .food-item img {
         max-width: 100%; /* Set maximum width to 100% for smaller screens */
     }
+}
+.btnAdd {
+    background-color: #d7e5a1; /* Green background */
+    border: none; /* Remove border */
+    color: rgb(0, 0, 0); /* White text */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make it inline-block */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 4px; /* Rounded corners */
 }

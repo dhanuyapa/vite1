@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
+import logo from './logo.jpeg'
 
 const Nav = styled.nav`
   width: 100%;
@@ -13,6 +14,7 @@ const Nav = styled.nav`
   
   position: relative;
   z-index: 100;
+  
 
   @media screen and (max-width: 768px) {
     .burger-menu {
@@ -23,12 +25,19 @@ const Nav = styled.nav`
   }
 `
 
+
 const Navbar = () => {
   return (
     <Nav>
-      <div className="logo">
-        {/* Your logo content here */}
-      </div>
+      
+    
+        <img
+          src={logo}
+          alt="logo"
+          className="logo"
+          style={{ width: '200px', height: '160px', paddingLeft: '70px', paddingBottom: "90px"}} // Inline CSS for the image
+        />
+      
       <div className="burger-menu">
         <Burger />
       </div>
