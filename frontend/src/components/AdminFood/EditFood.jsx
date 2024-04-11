@@ -4,6 +4,8 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { initializeApp } from "firebase/app";
 import { useNavigate, useParams } from 'react-router-dom';
 import AdminHeader from '../Header/AdminHeader';
+import './Editfood.css'
+import FoodSearch from '../SearchBar/FoodSearch';
 
 const EditFood = () => {
   const { id } = useParams();
@@ -103,61 +105,83 @@ const EditFood = () => {
     }
   };
 
+
+
   return (
     <div>
       <AdminHeader />
-      <h1>Edit Food</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Food Name:
-          <input
-            type="text"
-            name="foodname"
-            value={food.foodname}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Price:
-          <input
-            type="text"
-            name="price"
-            value={food.price}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Description:
-          <textarea
-            name="description"
-            value={food.description}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Upload New Image:
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-        </label>
-        <br />
-        {food.imageUrl && (
-          <div>
-            <h3>Current Image:</h3>
-            <img src={food.imageUrl} alt="Food" style={{ maxWidth: '200px' }} />
+<br></br>
+      
+      <div className="search2">
+      <FoodSearch /></div>
+     
+      <section>
+        <div className="container5">
+          <div className="box">
+            <h1>Edit Food</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="edit">
+              <label>
+                Food Name:
+                <input
+                  type="text"
+                  name="foodname"
+                  value={food.foodname}
+                  onChange={handleChange}
+                />
+              </label></div>
+              <br />
+              <div className="edit">
+              <label>
+                Price:
+                <input
+                  type="text"
+                  name="price"
+                  value={food.price}
+                  onChange={handleChange}
+                />
+              </label></div>
+              <br />
+              <div className="edit">
+              <label>
+                Description:
+                <textarea
+                  name="description"
+                  value={food.description}
+                  onChange={handleChange}
+                />
+              </label></div>
+              <br />
+              <div className="edit">
+              <label>
+                Upload New Image:
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+              </label></div>
+              <br />
+             
+             
+                <button type="submit" className="btn1">Submit</button>
+               
+                <button type="button" onClick={handleDelete} className="btn2">Delete Food</button>
+            
+            </form>
           </div>
-        )}
-        <br />
-        <button type="submit">Save Changes</button>
-        <button type="button" onClick={handleDelete}>Delete Food</button>
-      </form>
+          <div className="right">
+            {food.imageUrl && (
+              <div>
+                <h3>Current Image:</h3>
+                <img src={food.imageUrl} alt="Food" className="add"  />
+              </div>
+            )}
+           
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
-
 export default EditFood;

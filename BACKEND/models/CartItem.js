@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const cartItemSchema = new Schema({
-    customerId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Customer',
+    nic: {
+        type: String, // Assuming NIC is stored as a string
+        ref: 'newcustomers', // Reference to the newcustomers model
         required: true
     },
     foodItems: [{ 

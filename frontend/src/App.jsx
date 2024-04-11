@@ -14,6 +14,7 @@ import AllCustomer from './components/AllCustomer/AllCustomer';
 import ViewCus from './components/ViewCustomer/ViewCus';
 import Home from './components/Home/Home';
 import ContactUs from './components/Contact Us/ContactUs';
+import AddCart from './components/AddCart/AddCart';
 
 
 import './App.css';
@@ -37,6 +38,8 @@ function App() {
           <Route path="/edit/:id" element={<EditFood/>} />
           <Route path="/fetchc" element={<AllCustomer/>} />
           <Route path="/searchByNIC/:nic" element={<ViewCus/>} />
+
+          <Route path="/addItem/:nic/:foodId" element={<AddCart/>} />
 
     
 

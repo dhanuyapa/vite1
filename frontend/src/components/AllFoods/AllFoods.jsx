@@ -1,27 +1,25 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./AllFood.css";
 import FoodSearch from '../SearchBar/FoodSearch';
-
-
-
 
 function AllFoods() {
     const [foods, setFoods] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null); // Added error state
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const loggedInUserNIC = localStorage.getItem('loggedInUserNIC'); // Retrieve the logged-in user's NIC from local storage
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://localhost:8070/food/fetch'); // Adjust the route to match your backend
+                const response = await axios.get('http://localhost:8070/food/fetch');
                 setFoods(response.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching foods:', error);
-                setError(error); // Set error state if there's an error
+                setError(error);
                 setLoading(false);
             }
         }
@@ -29,27 +27,24 @@ function AllFoods() {
         fetchData();
     }, []);
 
+    const handleAddToCart = (foodId) => {
+        navigate(`/addItem/${loggedInUserNIC}/${foodId}`); // Pass the loggedInUserNIC along with the foodId
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>; // Render error message if there's an error
+        return <div>Error: {error.message}</div>;
     }
 
-    const handleView = (id) => {
-        navigate(`/fetch/${id}`);
-    };
-
     return (
-       
         <div className="all-foods-container">
-            <br></br>
-          
-          <div className="search">
-
-      
-          <FoodSearch />    </div>
+            <br />
+            <div className="search">
+                <FoodSearch />
+            </div>
             <h2>All Foods</h2>
             <ul className="food-list">
                 {foods.map((food) => (
@@ -67,7 +62,7 @@ function AllFoods() {
                             <div className="food-price">Price: {food.price}</div>
                             <div className="food-description">Description: {food.description}</div>
                         </div>
-                        <button onClick={() => handleView(food._id)}>Add Cart</button>
+                        <button onClick={() => handleAddToCart(food._id)}>Add Cart</button>
                     </li>
                 ))}
             </ul>
