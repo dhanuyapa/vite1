@@ -5,6 +5,8 @@ import './UserProfile.css'
 import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
 import profileBanner from './profileBanner.jpg'
+import Typography from '@mui/material/Typography';
+import Footer from '../footer/footer';
 
 function UserProfile() {
     const [userDetails, setUserDetails] = useState(null);
@@ -65,6 +67,7 @@ function UserProfile() {
     }
 
     return (
+        <div>
         <div className="main">
             
            
@@ -140,8 +143,8 @@ function UserProfile() {
   <div className="paragraph">
 <p>Welcome to your profile on Yam Yard! Here, you're in control of your food ordering experience. From exploring the diverse cuisines available in your area to managing your favorite restaurants and past orders, your profile is your gateway to culinary delights. Update your personal information, including delivery addresses and payment methods, to ensure a seamless ordering process every time. Keep track of your loyalty rewards and exclusive offers tailored just for you. Whether you're craving comfort food on a rainy day or seeking a gourmet feast for a special occasion, your profile is where the magic happens. Dive into a world of flavor, convenience, and satisfaction. Start exploring now!</p>
 </div> </div>
-
-
+</div>
+<Footer />
 
         </div>
        

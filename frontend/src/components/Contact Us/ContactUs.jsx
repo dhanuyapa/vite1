@@ -5,6 +5,7 @@ import './ContactUs.css';
 import envelope_icon from './envelope.png'
 import phone_icon from './smartphone.png'
 import img_icon from './img1.jpeg'
+import Footer from '../footer/footer';
 
 function ContactUs() {
 
@@ -81,7 +82,7 @@ function ContactUs() {
 
   return (
     
-    
+    <div>
   
    < div className='container4'>
 
@@ -136,9 +137,10 @@ function ContactUs() {
       <div class="image1">
                     <img src={img_icon} alt=" "/>
                 </div>
+               
 
       </div>
-
+ <Footer /></div>
       
 
   );

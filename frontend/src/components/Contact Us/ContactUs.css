@@ -26,15 +26,15 @@
 
 
 .form {
-  top: 45%;
+  top: 29%;
   left: 10%;
   position: absolute;
   width:700px;
-  height: 400px ;
+  height: 500px ;
   border-radius: 10px;
   padding:0em 3em;
-  border: 5px solid #e9cece;
-  border-radius: 4px;
+  border: 5px solid #110101;
+  border-radius: 1px;
   background-color: #E1E1E1;
   backdrop-filter: blur(2px);
   color: #545454;
@@ -68,10 +68,11 @@ width: 500px;
   border-radius: 4px;
   font-size: 16px;
   padding: 12px 30px;
-  margin-top: 50px;
-  margin-left:35%;
+  margin-top: 90px;
+  margin-left:25%;
   align-items: center;
   transform: translateY(40%);
+ 
 }
 
 .message img{
@@ -102,7 +103,7 @@ width: 500px;
   width: auto;
   border-radius: 50%;
   position: absolute;
-  top: 0.2em;
+  top: 150px;
   right: 60px;
   transform: translateY(-30%);
 }

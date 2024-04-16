@@ -15,6 +15,8 @@ import ViewCus from './components/ViewCustomer/ViewCus';
 import Home from './components/Home/Home';
 import ContactUs from './components/Contact Us/ContactUs';
 import AddCart from './components/AddCart/AddCart';
+import Total from './components/AddCart/Total';
+import AboutUs from './components/AboutUs/AboutUs';
 
 
 import './App.css';
@@ -26,7 +28,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} /> {/* Display Home component by default */}
-          <Route path="/ContactUs" element={<ContactUs/>} /> {/* Display Home component by default */}
+          <Route path="/ContactUs" element={<ContactUs/>} />
+          <Route path="/AboutUs" element={<AboutUs/>} /> {/* Display Home component by default */}
           <Route path="/register" element={<Addcustomer />} />
           <Route path="/loginCus" element={<Login />} />
           <Route path="/getUser/:nic" element={<UserProfile />} />
@@ -40,6 +43,8 @@ function App() {
           <Route path="/searchByNIC/:nic" element={<ViewCus/>} />
 
           <Route path="/addItem/:nic/:foodId" element={<AddCart/>} />
+          <Route path="/addItem/:nic/:foodId" element={<Total/>} />
+          
 
     
 

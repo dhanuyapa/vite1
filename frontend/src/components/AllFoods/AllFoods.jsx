@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./AllFood.css";
 import FoodSearch from '../SearchBar/FoodSearch';
+import Footer from '../footer/footer';
 
 function AllFoods() {
     const [foods, setFoods] = useState([]);
@@ -66,6 +67,7 @@ function AllFoods() {
                     </li>
                 ))}
             </ul>
+            <Footer />
         </div>
     );
 }

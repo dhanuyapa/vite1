@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AdminHeader from '../Header/AdminHeader';
 import './Editfood.css'
 import FoodSearch from '../SearchBar/FoodSearch';
+import Footer from '../footer/footer';
 
 const EditFood = () => {
   const { id } = useParams();
@@ -181,6 +182,7 @@ const EditFood = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

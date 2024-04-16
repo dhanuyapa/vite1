@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Footer from '../footer/footer';
 
 function AllCustomers() {
   const [customers, setCustomers] = useState([]);
@@ -65,7 +66,7 @@ function AllCustomers() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer><Footer />
     </div>
   );
 }

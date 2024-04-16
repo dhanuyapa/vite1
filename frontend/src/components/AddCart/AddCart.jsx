@@ -42,7 +42,7 @@ function AddCart() {
 
     const calculateTotalPrice = async () => {
         try {
-            const response = await axios.get(`http://localhost:8070/addCart/totalPrice/661805767308ba11e8a676ff`);
+            const response = await axios.get(`http://localhost:8070/addCart/totalPrice/661d01d6a45150786bea9d8d`);
             setTotalPrice(response.data.total_price);
         } catch (error) {
             console.error('Error calculating total price:', error);

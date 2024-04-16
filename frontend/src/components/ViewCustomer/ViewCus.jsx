@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom'; // Import the useLocation hook
+import Footer from '../footer/footer';
 
 function ViewCus() {
     const { searchedCustomer } = useLocation().state;
@@ -28,6 +29,7 @@ function ViewCus() {
             ) : (
                 <p>No customer found</p>
             )}
+            <Footer />
         </div>
     );
 }
