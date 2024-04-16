@@ -9,6 +9,8 @@
     margin-left: 100px; /* Push the search bar to the right corner */
     height: 40px; /* Adjust the height as needed */
     border: 1px solid black;
+    width: 350px;
+    
   }
   
   .search-container {
@@ -24,9 +26,6 @@
     outline: none;
     padding: 5px;
     border-radius: 20px;
-    width: 300px;
+    width: 40px;
   }
   
-  /* Style your SearchIcon component accordingly */
-  
-  /* Search button style */

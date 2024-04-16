@@ -27,7 +27,7 @@ section {
   section .container5 {
     position: relative;
     width: 900px;
-    height: 500px;
+    height: 570px;
     background-color: white;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -82,4 +82,24 @@ section {
     display: flex;
     justify-content: center; /* Center items horizontally */
   }
-  
+  .food-input,
+.price-input,
+.description-input,
+.image-input {
+  width: calc(100% - 20px); /* Adjust width as needed */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style for the textarea */
+.description-input {
+  height: 100px; /* Adjust height as needed */
+}
+
+/* Style for the file input */
+.image-input {
+  /* Add specific styles for file input if needed */
+}

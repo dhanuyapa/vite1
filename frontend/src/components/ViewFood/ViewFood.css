@@ -28,7 +28,7 @@
 }
 
 .price, .Des {
-    font-size: 2vw; /* Adjust font size relative to viewport width */
+    font-size: 1.5vw; /* Adjust font size relative to viewport width */
     color: #333;
     margin-top: 10px;
     text-align: left;
@@ -62,7 +62,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 2vw; /* Adjust font size relative to viewport width */
+    font-size: 1.7vw; /* Adjust font size relative to viewport width */
 }
 
 .Vright .add2 {

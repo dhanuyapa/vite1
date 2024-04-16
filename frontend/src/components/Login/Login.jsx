@@ -6,6 +6,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import login from './login.png';
 import person from './person.png';
 import './Login.css';
+import Footer from '../footer/footer';
+
 
 function Login() {
   const [nic, setNic] = useState('');
@@ -48,7 +50,7 @@ function Login() {
         setPassword("");
         setLoginSuccess(true);
 
-        if (nic === '888888888888' && password === '88888888@') {
+        if (nic === '200028301681' && password === '12345678@') {
           navigate('/add');
         } else {
           navigate('/getUser/:nic');
@@ -71,6 +73,7 @@ function Login() {
   };
 
   return (
+    <div>
     <section className="vh-100" style={{ backgroundColor: 'white' }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
@@ -147,8 +150,10 @@ function Login() {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </section>
+    <Footer /></div>
+   
   );
 }
 

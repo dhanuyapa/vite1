@@ -51,7 +51,7 @@ const RightNav = ({ open }) => {
     <Ul open={open}>
       <li><StyledLink to="/getUser/:nic" onClick={handleProfileClick}>Profile</StyledLink></li>
       <li><StyledLink to="/fetch">About Us</StyledLink></li>
-      <li><StyledLink to="/add">Contact Us</StyledLink></li>
+     
       <li><StyledLink to="/loginCus">Sign In</StyledLink></li>
       <li><StyledLink to="/register">Sign Up</StyledLink></li>
       <li><StyledLink to="/ContactUs">Contact Us</StyledLink></li>

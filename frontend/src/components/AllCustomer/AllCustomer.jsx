@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchCus from '../SearchBar/SearchCus';
 import AdminHeader from '../Header/AdminHeader';
-
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Footer from '../footer/footer';
 
 function AllCustomers() {
   const [customers, setCustomers] = useState([]);
@@ -29,38 +36,40 @@ function AllCustomers() {
   return (
     <div>
       <AdminHeader />
-    <h2>All Customers</h2>
-    <SearchCus />
-    
-    <table>
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>NIC</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Address</th>
-          <th>Image</th>
-        </tr>
-      </thead>
-      <tbody>
-        {customers.map((customer) => (
-          <tr key={customer._id}>
-            <td>{customer.fname}</td>
-            <td>{customer.lname}</td>
-            <td>{customer.nic}</td>
-            <td>{customer.phone}</td>
-            <td>{customer.email}</td>
-            <td>{`${customer.no}, ${customer.street1}, ${customer.street2 ? customer.street2 + ',' : ''} ${customer.city}`}</td>
-            <td><img src={customer.imageUrl} alt="Customer" style={{ maxWidth: '200px' }} /></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  
+      <h2>All Customers</h2>
+      <SearchCus />
+      <TableContainer component={Paper}>
+        <Table>
+        <TableHead style={{ backgroundColor: 'lightblue', fontWeight: 'bold', fontSize: 'small' }}>
+
+            <TableRow>
+              <TableCell >First Name</TableCell>
+              <TableCell >Last Name</TableCell>
+              <TableCell>NIC</TableCell>
+              <TableCell>Phone</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>Image</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {customers.map((customer) => (
+              <TableRow key={customer._id} >
+                <TableCell >{customer.fname}</TableCell>
+                <TableCell>{customer.lname}</TableCell>
+                <TableCell>{customer.nic}</TableCell>
+                <TableCell>{customer.phone}</TableCell>
+                <TableCell>{customer.email}</TableCell>
+                <TableCell>{`${customer.no}, ${customer.street1}, ${customer.street2 ? customer.street2 + ',' : ''} ${customer.city}`}</TableCell>
+                <img src={customer.imageUrl} alt="Customer" style={{ width: 'auto', height: '100px', maxWidth: '200px' ,paddingTop:'8px'}} />
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer><Footer />
+    </div>
   );
 }
 
 export default AllCustomers;
+

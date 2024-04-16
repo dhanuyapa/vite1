@@ -54,7 +54,7 @@ function ViewFood() {
                 <h1 className="fName">{food.foodname}</h1>
                 <br />
                 <hr />
-                <h3></h3>
+                
                 <p className="price">Price: {food.price}</p>
                 <p className="Des"> {food.description}</p>
                 <hr />

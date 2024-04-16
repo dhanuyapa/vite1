@@ -9,6 +9,7 @@ import login from './login.png';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import FoodSearch from '../SearchBar/FoodSearch';
 import Container from '@mui/material/Container';
+import Footer from '../footer/footer';
 
 
 
@@ -177,7 +178,7 @@ const Addfoods = () => {
           <img src={login} alt="login" className="add" />
         </div>
       </div>
-    </section>
+    </section><Footer />
     </div> 
   );
 };

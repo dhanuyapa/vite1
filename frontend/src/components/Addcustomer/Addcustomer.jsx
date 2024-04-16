@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import './Addcustomer.css';
+import Footer from '../footer/footer';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAarwFcpYIKj1T7Hb2yIOMNiDP5Hp-ezFc",
@@ -123,8 +124,9 @@ const Addcustomer = () => {
   };
 
   return (
-    
+    <div>
     <section>
+       
       <br></br>
         <div className="container1">
         <form className='flex' method="POST" onSubmit={handleSubmit}>
@@ -484,7 +486,8 @@ const Addcustomer = () => {
 </div>
           </form>
           </div>
-          </section>
+         <br></br>
+          </section> <Footer /></div>
           
   );
 }
