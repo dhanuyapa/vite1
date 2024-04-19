@@ -35,7 +35,7 @@ const Navbar = () => {
           src={logo}
           alt="logo"
           className="logo"
-          style={{ width: '200px', height: '160px', paddingLeft: '70px', paddingBottom: "90px"}} // Inline CSS for the image
+          style={{ width: '160px', height: '160px', paddingLeft: '70px', paddingBottom: "90px"}} // Inline CSS for the image
         />
       
       <div className="burger-menu">
