@@ -29,7 +29,15 @@ function AllFoods() {
     }, []);
 
     const handleAddToCart = (foodId) => {
-        navigate(`/addItem/${loggedInUserNIC}/${foodId}`); // Pass the loggedInUserNIC along with the foodId
+
+        if (loggedInUserNIC) {
+            // User is logged in, navigate to add to cart page
+            navigate(`/addItem/${loggedInUserNIC}/${foodId}`);
+        } else {
+            // User is not logged in, navigate to login page
+            navigate('/loginCus');
+        }
+        // Pass the loggedInUserNIC along with the foodId
     };
 
     if (loading) {
