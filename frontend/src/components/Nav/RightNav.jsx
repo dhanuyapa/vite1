@@ -49,11 +49,12 @@ const RightNav = ({ open }) => {
 
   return (
     <Ul open={open}>
-         <li><StyledLink to="/Home">Home</StyledLink></li>
+         <li><StyledLink to="/">Home</StyledLink></li>
          <li><StyledLink to="/fetch">All Foods</StyledLink></li>
       <li><StyledLink to="/getUser/:nic" onClick={handleProfileClick}>Profile</StyledLink></li>
      
-     
+      <li><StyledLink to="/ContactUs">Contact Us</StyledLink></li>
+      <li><StyledLink to="/AboutUs">About Us</StyledLink></li>
       <li><StyledLink to="/loginCus">Sign In</StyledLink></li>
       <li><StyledLink to="/register">Sign Up</StyledLink></li>
     
