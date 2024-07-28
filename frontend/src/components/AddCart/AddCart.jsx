@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function AddCart() {
     const { nic, foodId } = useParams();
+    const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -54,6 +55,11 @@ function AddCart() {
         calculateTotalPrice();
     };
 
+    const handlePlaceOrder = () => {
+        // Any other logic for placing the order can go here
+        navigate('/map');
+    };
+
     return (
         <div>
             <h2>Add to Cart</h2>
@@ -74,6 +80,8 @@ function AddCart() {
             {message && <p>{message}</p>}
             {error && <p>Error: {error}</p>}
             {totalPrice !== null && <p>Total Price: ${totalPrice.toFixed(2)}</p>}
+
+            <button onClick={handlePlaceOrder}>Place Order</button>
         </div>
     );
 }

@@ -10,7 +10,7 @@ const Nav = styled.nav`
   padding: 0 px;
   display: flex;
   justify-content: space-between;
-  background-color: #e9e989;
+  background-color: #ffffb2;
   
   position: relative;
   z-index: 100;
@@ -35,7 +35,7 @@ const Navbar = () => {
           src={logo}
           alt="logo"
           className="logo"
-          style={{ width: '200px', height: '160px', paddingLeft: '70px', paddingBottom: "90px"}} // Inline CSS for the image
+          style={{ width: '160px', height: '160px', paddingLeft: '70px', paddingBottom: "90px"}} // Inline CSS for the image
         />
       
       <div className="burger-menu">

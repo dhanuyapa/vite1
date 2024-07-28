@@ -12,7 +12,7 @@ const Ul = styled.ul`
   @media (max-width: 768px) {
     display: ${({ open }) => open ? 'flex' : 'none'};
     flex-flow: column nowrap;
-    background-color: #b5b569;
+    background-color: 		#ffffb2;
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
@@ -49,12 +49,15 @@ const RightNav = ({ open }) => {
 
   return (
     <Ul open={open}>
+         <li><StyledLink to="/">Home</StyledLink></li>
+         <li><StyledLink to="/fetch">All Foods</StyledLink></li>
       <li><StyledLink to="/getUser/:nic" onClick={handleProfileClick}>Profile</StyledLink></li>
-      <li><StyledLink to="/fetch">About Us</StyledLink></li>
      
+      <li><StyledLink to="/ContactUs">Contact Us</StyledLink></li>
+      <li><StyledLink to="/AboutUs">About Us</StyledLink></li>
       <li><StyledLink to="/loginCus">Sign In</StyledLink></li>
       <li><StyledLink to="/register">Sign Up</StyledLink></li>
-      <li><StyledLink to="/ContactUs">Contact Us</StyledLink></li>
+    
     </Ul>
   );
 }

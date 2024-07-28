@@ -29,7 +29,15 @@ function AllFoods() {
     }, []);
 
     const handleAddToCart = (foodId) => {
-        navigate(`/addItem/${loggedInUserNIC}/${foodId}`); // Pass the loggedInUserNIC along with the foodId
+
+        if (loggedInUserNIC) {
+            // User is logged in, navigate to add to cart page
+            navigate(`/addItem/${loggedInUserNIC}/${foodId}`);
+        } else {
+            // User is not logged in, navigate to login page
+            navigate('/loginCus');
+        }
+        // Pass the loggedInUserNIC along with the foodId
     };
 
     if (loading) {
@@ -61,7 +69,7 @@ function AllFoods() {
                         <div className="food-details">
                             <div className="foodname">{food.foodname}</div>
                             <div className="food-price">Price: {food.price}</div>
-                            <div className="food-description">Description: {food.description}</div>
+                            <div className="food-description">{food.description}</div>
                         </div>
                         <button onClick={() => handleAddToCart(food._id)} className ="btnAdd">Add Cart</button>
                     </li>

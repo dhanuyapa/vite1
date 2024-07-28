@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.14",
+    "@react-google-maps/api": "^2.19.3",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",

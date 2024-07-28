@@ -17,6 +17,8 @@ import ContactUs from './components/Contact Us/ContactUs';
 import AddCart from './components/AddCart/AddCart';
 import Total from './components/AddCart/Total';
 import AboutUs from './components/AboutUs/AboutUs';
+import MapRoute from './components/map/map';
+
 
 
 import './App.css';
@@ -26,6 +28,7 @@ function App() {
     <Router>
       <div>
         <Navbar />
+        
         <Routes>
           <Route path="/" element={<Home />} /> {/* Display Home component by default */}
           <Route path="/ContactUs" element={<ContactUs/>} />
@@ -43,7 +46,9 @@ function App() {
           <Route path="/searchByNIC/:nic" element={<ViewCus/>} />
 
           <Route path="/addItem/:nic/:foodId" element={<AddCart/>} />
-          <Route path="/addItem/:nic/:foodId" element={<Total/>} />
+          <Route path="/addItem/:nic/:foodId" element={<Total/>} /> 
+          <Route path="/map" element={<MapRoute />} /> {/* Corrected this line */}
+   
           
 
     
