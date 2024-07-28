@@ -9,6 +9,7 @@ function AboutUs (){
    
     return(
 
+<div>
         <div className="heading_Gayathri">
            <link href='https://fonts.googleapis.com/css?family=Irish Grover' rel='stylesheet'></link>
             <h1>About Us</h1>
@@ -22,8 +23,15 @@ function AboutUs (){
                 <div className="container_Gayathri">
                     <img src={img_icon} alt=''/>
                 </div>
-             
+               
         </div>
+        
+        <div style={{marginTop:'600px'}}>
+            <Footer />
+        </div>
+        
+        </div>
+        
         
 
     )

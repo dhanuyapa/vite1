@@ -9,6 +9,7 @@ import './Login.css';
 import Footer from '../footer/footer';
 
 
+
 function Login() {
   const [nic, setNic] = useState('');
   const [password, setPassword] = useState('');
@@ -152,7 +153,9 @@ function Login() {
         </div>
       </div> 
     </section>
-    <Footer /></div>
+
+    <div style={{marginTop: '120px'}}>
+    <Footer /></div></div>
    
   );
 }

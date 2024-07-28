@@ -8,10 +8,11 @@ import {
   DirectionsRenderer,
 } from "@react-google-maps/api";
 import image from "/bike.png";
-
+import Footer from "../footer/footer";
 
 
 const containerStyle = {
+  margintop: 150,
   width: "50%",
   height: "400px",
   position: "relative",
@@ -104,11 +105,12 @@ const MapRoute = () => {
     );
   };
 
-  return (
+  return ( 
+  <div>
     <LoadScript
       googleMapsApiKey="AIzaSyDfVQzBHlXDkSgvLZUHHbutEh5Y5WmlHPA"
       libraries={["places"]}
-    >
+    > 
       <Autocomplete onLoad={onLoadAutocomplete} onPlaceChanged={onPlaceChanged}>
         <input type="text" placeholder="Enter a location" style={inputStyle} />
       </Autocomplete>
@@ -142,6 +144,8 @@ const MapRoute = () => {
         )}
       </GoogleMap>
     </LoadScript>
+   
+   </div>
   );
 };
 

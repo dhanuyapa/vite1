@@ -20,7 +20,8 @@
 
 .visibility-icon-l{
     position: absolute;
-    left: 990px; /* Adjust as needed */
+    left: 840px; /* Adjust as needed */
+    margin-top: 10px;
   }
 
   .signup-message-l {

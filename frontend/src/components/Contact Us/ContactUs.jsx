@@ -1,6 +1,8 @@
 import React from 'react';
 import {useState} from 'react';
 import './ContactUs.css';
+import  {Typography} from '@mui/material';
+import {styled} from '@mui/system';
 
 import envelope_icon from './envelope.png'
 import phone_icon from './smartphone.png'
@@ -140,7 +142,8 @@ function ContactUs() {
                
 
       </div>
- <Footer /></div>
+      <div style={{marginTop:"0px"}}>
+ <Footer /></div></div>
       
 
   );

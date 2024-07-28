@@ -18,7 +18,7 @@
   background-color: #e9cc8f;
   background-size: cover;
   background-position: left;
-  min-height: 100vh;
+  min-height: 120vh;
   align-items: left;
 }
 
@@ -42,6 +42,9 @@
   margin: 0 auto;
   box-sizing: border-box;
   transform: translateY(-0.2%);
+  margin-top: 40px;
+  margin-left: -70px;
+  
 }
 
 .input{
